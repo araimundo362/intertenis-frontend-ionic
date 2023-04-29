@@ -1,0 +1,57 @@
+.header {
+    background: beige;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 5px;
+}
+
+.column {
+
+    &__title {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        margin-top: 10px;
+    
+        &__label {
+            margin: 0
+        }
+    }
+
+    &__submit {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.margin-row {
+    margin: 3px;
+}
+
+.first-row {
+    margin-top: 10px;
+}
+.error-message {
+    transition: opacity 1s linear;
+    margin-top: 2px;
+    color: var(--ion-color-danger);
+
+    min-height: 24px;
+    font-size: 13px;
+
+    opacity: 0;
+}
+
+.error-alert {
+    margin-top: 4px;
+    padding-left: 5px;
+    margin-bottom: 0;
+  }
+
+.register-buttons {
+    width: 50%;
+}

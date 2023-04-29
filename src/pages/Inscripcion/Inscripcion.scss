@@ -1,0 +1,18 @@
+.select {
+    width: 100%
+}
+
+.inscripcionContent {
+    margin-top: 15px !important;
+}
+
+.header-inscripcion {
+    height: 110px !important;
+
+    background: orange !important;
+
+    &__container {
+        display: flex;
+        align-items: flex-end;
+    }
+}

@@ -1,0 +1,95 @@
+import { IonButton, IonCol, IonContent, IonFooter, IonImg, IonInput, IonItem, IonLabel, IonPage, IonRow } from "@ionic/react";
+import { useForm, useFormContext } from "react-hook-form";
+import { useHistory } from "react-router";
+
+import "./LoginForm.scss";
+import { useAuth } from "../../hooks/useAuth";
+import { OK, USER_NOT_FOUND } from "../../constants/constants";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+
+export type LoginFormValues = {
+    user: string,
+    password: string
+}
+
+const LoginForm: React.FC = () => {
+
+    const history = useHistory();
+    const { register, handleSubmit, formState: { errors }, clearErrors, setError, reset } = useForm<LoginFormValues>({
+        defaultValues: {
+            user: "",
+            password: ""
+        }
+    });
+    const { login } = useAuth();
+    const { setIsLoggedIn } = useContext(AuthContext);
+
+    const goToForgotPassword = () => {
+        history.push("/recuperar-password");
+        reset();
+    };
+
+    const goToRegisterPage = () => {
+        history.push("/register");
+    }
+    
+    const onLogin = async (data: LoginFormValues) => {
+        const loginResponse = await login(data.user, data.password);
+
+        switch (loginResponse) {
+            case OK:
+                setIsLoggedIn(true);
+                history.push("/home");
+                break;
+            case USER_NOT_FOUND:
+                setError("user", {type: "custom", message: "El usuario o contrasena ingresados no es correcta"});
+                break;
+    }
+}
+    return (<form className="row-width-form" onSubmit={handleSubmit(onLogin)}>
+                    <IonRow>
+                        <IonCol size="10" offset="1">
+                            <IonItem fill="solid" className="login-inputs">
+                                <IonLabel position="floating">Email*</IonLabel>
+                                <IonInput {...register("user", { required: true })} placeholder="Ingresa el mail"></IonInput>
+                            </IonItem>
+                            <div className="error-message" style={errors.user ? { opacity: 1 } : undefined}>
+                                {errors.user?.type === 'required' && <p role="alert" className="error-alert">Debe ingresar un email</p>}
+                                {errors.user && <p role="alert" className="error-alert">{errors.user.message}</p>}
+                            </div>
+                        </IonCol>
+                    </IonRow>
+                    <IonRow>
+                        <IonCol size="10" offset="1">
+                            <IonItem fill="solid" className="login-inputs">
+                                <IonLabel position="floating">Contrasena*</IonLabel>
+                                <IonInput {...register("password", { required: true })} type="password" placeholder="Ingresa la contrasena"></IonInput>
+                            </IonItem>
+                            <div className="error-message" style={errors.user ? { opacity: 1 } : undefined}>
+                                {errors.password?.type === 'required' && <p role="alert" className="error-alert">Debe ingresar su contrasena</p>}
+                            </div>
+                            <div className="forgot-password-container">
+                                <span className="forgot-password-container__forgot-label" onClick={goToForgotPassword}>Olvide mi contrasena</span>
+                            </div>
+                        </IonCol>
+                    </IonRow>
+                    <IonRow>
+                        <IonCol size="12" className="submit-column">
+                            <IonButton type="submit" className="login-page-buttons">
+                                        Iniciar sesión
+                            </IonButton>
+                        </IonCol>
+                    </IonRow>
+                    <IonRow>
+                        <IonCol size="12" className="submit-column">
+                            <IonButton className="login-page-buttons" fill="outline" onClick={goToRegisterPage}>
+                                Registrate
+                            </IonButton>
+                        </IonCol>    
+                    </IonRow> 
+                </form>
+    )
+};
+
+export default LoginForm;

@@ -1,0 +1,20 @@
+.resultado-form {
+
+    &__radio-column {
+        display: flex;
+        align-items: center;
+    }
+
+    &__radio {
+        margin-left: 5px;
+    }
+}
+
+.width-button-50 {
+    width: 50%;
+}
+
+.h4-label {
+    margin: 0;
+    font-size: 23px;
+}

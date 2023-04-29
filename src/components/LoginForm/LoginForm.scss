@@ -1,0 +1,25 @@
+.error-message {
+    transition: opacity 1s linear;
+    margin-top: 2px;
+    color: var(--ion-color-danger);
+
+    min-height: 24px;
+    font-size: 13px;
+
+    opacity: 0;
+}
+
+.error-alert {
+    margin-top: 4px;
+    padding-left: 5px;
+  }
+
+.login-inputs {
+    --background: antiquewhite;
+    --background-focused: antiquewhite;
+}
+
+.login-page-buttons {
+    width: 50%;
+}
+
