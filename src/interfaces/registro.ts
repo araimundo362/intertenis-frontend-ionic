@@ -3,5 +3,6 @@ export type RegisterFormValue = {
     apellido: string,
     apodo?: string,
     email: string,
-    password: string
+    password: string,
+    telefono: string
 };

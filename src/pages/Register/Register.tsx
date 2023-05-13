@@ -1,17 +1,14 @@
-import { IonAlert, IonButton, IonCol, IonContent, IonFooter, IonImg, IonInput, IonItem, IonLabel, IonPage, IonRow } from "@ionic/react";
+import { useState } from "react";
+import { IonAlert, IonButton, IonCol, IonContent, IonInput, IonItem, IonLabel, IonPage, IonRow } from "@ionic/react";
 import { useHistory } from "react-router";
 import { useForm } from "react-hook-form";
 
+import { RegisterFormValue } from "../../interfaces/registro";
 import { axiosRegister } from "../../axios/auth";
 import TennisBallComponent from "../../components/TennisBall";
-
-import RED from "../../assets/Red_.jpg";
-import LOGO from "../../assets/logo_intertenis.png";
+import Footer from "../../components/Footer";
 
 import "./Register.scss";
-import { useState } from "react";
-import { RegisterFormValue } from "../../interfaces/registro";
-import Footer from "../../components/Footer";
 
 const RegisterPage: React.FC<any> = () => {
 
@@ -24,7 +21,8 @@ const RegisterPage: React.FC<any> = () => {
             apellido: "",
             email: "",
             password: "",
-            apodo: ""
+            apodo: "",
+            telefono: ""
         }
     });
 
@@ -83,6 +81,17 @@ const RegisterPage: React.FC<any> = () => {
                             </IonItem>
                             <div className="error-message" style={errors.apellido ? { opacity: 1 } : undefined}>
                                 {errors.apellido?.type === 'required' && <p role="alert" className="error-alert">Debes ingresar tu apellido</p>}
+                            </div>
+                        </IonCol>
+                    </IonRow>
+                    <IonRow >
+                        <IonCol size="10" offset="1">
+                            <IonItem fill="solid" >
+                                <IonLabel position="floating">Telefono*</IonLabel>
+                                <IonInput {...register("telefono", { required: true })} placeholder="Ingresa un numero de telefono"></IonInput>
+                            </IonItem>
+                            <div className="error-message" style={errors.email ? { opacity: 1 } : undefined}>
+                                {errors.telefono?.type === 'required' && <p role="alert" className="error-alert">Debe ingresar un telefono</p>}
                             </div>
                         </IonCol>
                     </IonRow>
