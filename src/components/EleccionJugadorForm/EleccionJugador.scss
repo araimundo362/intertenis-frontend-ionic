@@ -1,5 +1,11 @@
 .eleccion-jugador-form {
 
+    &__select-rival {
+        height: 50px;
+        background: silver;
+        border-radius: 10px
+    }
+
     &__submit-column {
         display: flex;
         justify-content: center;

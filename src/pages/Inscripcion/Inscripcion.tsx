@@ -15,7 +15,7 @@ const InscripcionPage: React.FC = () => {
 
     const history = useHistory();
     
-    const {userData, setInscripcion, setCategoria, setEquipo} = useContext(AuthContext);
+    const {userData } = useContext(AuthContext);
 
     const [alertOpen, setAlertOpen] = useState(false);
     const [showToast, setShowToast] = useState(false); // Toast para fallas de api-inscripcion
@@ -24,9 +24,7 @@ const InscripcionPage: React.FC = () => {
         defaultValues: {
             nombre: userData.nombre,
             apellido: userData.apellido,
-            equipo: "",
-            categoria: "",
-            zona: ""
+            telefono: userData.telefono
         }
     });
     
@@ -36,14 +34,9 @@ const InscripcionPage: React.FC = () => {
 
     const onInscripcion = async (data: InscripcionFormValues) => {
         const inscripto = {...data, _id: userData._id};
-        console.log("inscripto", inscripto)
-        console.log("lo veo desde data", data.equipo)
         const res =  await addInscripto(inscripto);
         if (res) {
             setAlertOpen(true);
-            setInscripcion(true);
-            setCategoria(Number(data.categoria));
-            setEquipo(data.equipo)
         } else {
             setShowToast(true);
         }
@@ -55,7 +48,7 @@ const InscripcionPage: React.FC = () => {
 
     return <IonPage>
                 <Header label="Inscripcion" action={goBack}/>
-                <IonContent>
+                <IonContent className="background-home">
                 <form className="inscripcionContent" onSubmit={handleSubmit(onInscripcion)}>
                 <IonRow>
                         <IonCol size="10" offset="1">
@@ -73,56 +66,12 @@ const InscripcionPage: React.FC = () => {
                             </IonItem>
                         </IonCol>
                     </IonRow>
-                    <IonRow>
+                    <IonRow >
                         <IonCol size="10" offset="1">
                             <IonItem fill="solid">
-                                <IonSelect {...register("categoria", {
-                                    required: "Se debe ingresar la categoria"
-                                })} className="select" placeholder="Categoria*" interface="popover">
-                                    <IonSelectOption value={1}>1ra</IonSelectOption>
-                                    <IonSelectOption value={2}>2da</IonSelectOption>
-                                    <IonSelectOption value={3}>3ra</IonSelectOption>
-                                    <IonSelectOption value={4}>4ta</IonSelectOption>
-                                    <IonSelectOption value={5}>5ta</IonSelectOption>
-                                    <IonSelectOption value={6}>6ta</IonSelectOption>
-                                    <IonSelectOption value={7}>7ma</IonSelectOption>
-                                    <IonSelectOption value={8}>8va</IonSelectOption>
-                                    <IonSelectOption value={9}>9na</IonSelectOption>
-                                </IonSelect>
+                                <IonLabel position="stacked">Telefono*</IonLabel>
+                                <IonInput {...register("telefono", { required: true })} disabled={true}></IonInput>
                             </IonItem>
-                            {errors.categoria && <p> {errors.categoria.message} </p>}
-
-                        </IonCol>
-                    </IonRow>
-                    <IonRow>
-                        <IonCol size="10" offset="1">
-                            <IonItem fill="solid">
-                                <IonSelect {...register("zona", {
-                                    required: "Se debe ingresar la zona a anotarse"
-                                })} className="select" placeholder="Zona*" interface="popover">
-                                    <IonSelectOption value="A">A</IonSelectOption>
-                                    <IonSelectOption value="B">B</IonSelectOption>
-                                    <IonSelectOption value="C">C</IonSelectOption>
-                                    <IonSelectOption value="D">D</IonSelectOption>
-                                </IonSelect>
-                            </IonItem>
-                            {errors.zona && <p> {errors.zona.message} </p>}
-
-                        </IonCol>
-                    </IonRow>
-                    <IonRow>
-                        <IonCol offset="1" size="10">
-                            <IonItem fill="solid">
-                                <IonSelect {...register("equipo", {
-                                    required: "Se debe elegir un equipo"
-                                })} className="select" placeholder="Equipo*" interface="action-sheet">
-                                    <IonSelectOption value="LAKEMO">Lakemo</IonSelectOption>
-                                    <IonSelectOption value="MELABANKO">Melabanko</IonSelectOption>
-                                    <IonSelectOption value="MURO">Muro</IonSelectOption>
-                                    <IonSelectOption value="NUNKAFUERA">Nunkafuera</IonSelectOption>
-                                </IonSelect>
-                            </IonItem>
-                            {errors.equipo && <p> {errors.equipo.message} </p>}
                         </IonCol>
                     </IonRow>
                     <IonRow>
@@ -131,7 +80,7 @@ const InscripcionPage: React.FC = () => {
                         </IonCol>
                     </IonRow>
                 </form>
-                <Alert isOpen={alertOpen} closeAlert={onCloseAlert} header="Fantastico !" message="Te has anotado a la liga!" buttons={["Ok!"]}/>
+                <Alert isOpen={alertOpen} closeAlert={onCloseAlert} header="Fantastico !" subHeader="Te has anotado a la liga!" message="Comunicate con German Diaz para confirmar la inscripcion!"  buttons={["Ok!"]}/>
                 </IonContent>
     </IonPage>
 };

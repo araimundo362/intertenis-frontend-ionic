@@ -4,9 +4,12 @@ import { ResultadosContext } from "../../context/ResultadosContext";
 import { AuthContext } from "../../context/AuthContext";
 import { useLiga } from "../../hooks/useLiga";
 import Alert from "../Alert";
+import { useHistory } from "react-router";
 
 const CheckpointResultado: React.FC = () => {
 
+    const history = useHistory();
+    
     const { rival, resultado, status, fecha, prevStep } = useContext(ResultadosContext)
     const { userData, categoria, equipo } = useContext(AuthContext);
 
@@ -22,20 +25,18 @@ const CheckpointResultado: React.FC = () => {
             }, 
             fecha,
             categoria,
-            score: resultado,
+            score: resultado.split("-").join(""),
             rival: {
                 nombre: rival.nombre,
                 _id: rival._id,
                 equipo: rival.equipo
             }
         }
-
-        console.log("cual es body a enviar?", resultadoBody)
-        const response = await cargarResultado(resultadoBody);
+        await cargarResultado(resultadoBody);
     }
 
     const cerrarAlerta = () => {
-        console.log("sarasa");
+       history.push("/home");
     };
 
     return <>

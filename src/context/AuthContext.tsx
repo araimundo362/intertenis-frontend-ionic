@@ -27,9 +27,8 @@ export const AuthContextProvider = ({ children }: AuthContextProps) => {
     const [userData, setUserData] = useState<JugadorData>({
       nombre: "",
       apellido: "",
-      email: "",
       isAdmin: false,
-    //  inscripcion: false,
+      telefono: "",
       apodo: "",
       _id: ""
     });

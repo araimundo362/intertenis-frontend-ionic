@@ -1,0 +1,53 @@
+.preinscripcion-item {
+
+    --background: transparent;
+    &__content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        width: 100%;
+    }
+
+    &__container-one {
+        display: flex;
+        align-items: center;
+    }
+
+    &__button {
+        --background: transparent;
+        --box-shadow: none;
+
+        &__icon {
+            font-size: 30px;
+        }
+    }
+}
+
+.size-ball {
+    height: 25px;
+    padding: 3px;
+}
+
+.jugador-item {
+
+    &__label-nombre {
+        font-size: 15px;
+        font-weight: 600;
+        margin: 5px;
+    } 
+
+    &__label-telefono {
+        font-size: 14px;
+        margin: 3px 5px 0 0;
+        padding: 5px;
+        color: gray;
+        font-weight: 600;
+    }
+}
+
+.fab-row-button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

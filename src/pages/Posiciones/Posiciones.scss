@@ -20,12 +20,20 @@
     margin: 0;
 }
 
-.posicion-par {
-    --background: #f1d34d;
+.transparent-background {
+    --background: transparent;
+    --border-style: solid;
+    --border-color: olive
+}
+.posicion-par-letra {
+    //--background: #f1d34d;
+    color: #f1d34d
 }
 
-.posicion-impar {
-    --background: rgb(59,59,59);
+.separador {
+    width: 100%;
+    height: 2px;
+    border: 1px solid yellow;
 }
 
 .flex-space {
@@ -40,4 +48,34 @@
 
 .column-border {
     text-align: center;
+}
+
+.posiciones-select {
+    color: yellow;
+}
+
+.headers-tabla {
+    --background: transparent;
+    margin-top: 10px;
+}
+
+.posicion-impar-letra {
+    color: darkgoldenrod
+}
+
+.withBorderDashed {
+    border-right: 1px dashed dimgray;
+}
+
+.withBorderContinue {
+    border-right: 1px solid dimgray;
+}
+
+/*.lastPaddingLeft {
+    padding-left: 1px;
+}*/
+
+.fontPromedio {
+    font-size: 13px;
+    padding-left: 2px;
 }

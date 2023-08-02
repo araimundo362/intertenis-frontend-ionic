@@ -71,7 +71,7 @@ const DefinirComponent: React.FC = () => {
                     <IonRow>
                         <IonCol size="10" offset="1">
                             <IonItem fill="solid">
-                                <IonSelect className="select" placeholder="Categoria*" interface="popover" onIonChange={(ev) => onSelectCategory(ev.detail.value)}>
+                                <IonSelect className="select" placeholder="Categoria*" onIonChange={(ev) => onSelectCategory(ev.detail.value)}>
                                     <IonSelectOption value={1}>1ra</IonSelectOption>
                                     <IonSelectOption value={2}>2da</IonSelectOption>
                                     <IonSelectOption value={3}>3ra</IonSelectOption>
@@ -86,14 +86,14 @@ const DefinirComponent: React.FC = () => {
                     </IonRow>
                     {players.length > 0 && <IonRow>
                                                 <IonCol size="10" offset="1">
-                                                    <IonSelect interface="popover" placeholder="Ganador del partido*" onIonChange={(ev) => ganadorSelected(ev.detail.value)}>
+                                                    <IonSelect placeholder="Ganador del partido*" onIonChange={(ev) => ganadorSelected(ev.detail.value)}>
                                                         {players.map((jugador) => <IonSelectOption value={jugador._id}>{jugador.nombre}</IonSelectOption>)}
                                                     </IonSelect>
                                                 </IonCol>
                                         </IonRow>}
                     {ganadorPartido && <IonRow>
                                                 <IonCol size="10" offset="1">
-                                                    <IonSelect interface="popover" placeholder="Perdedor del partido*" onIonChange={(ev) => perdedorSelected(ev.detail.value)}>
+                                                    <IonSelect placeholder="Perdedor del partido*" onIonChange={(ev) => perdedorSelected(ev.detail.value)}>
                                                         {players.filter((jugador) => jugador._id !== ganadorPartido._id).map((jugador) => <IonSelectOption value={jugador._id}>{jugador.nombre}</IonSelectOption>)}
                                                     </IonSelect>
                                                 </IonCol>

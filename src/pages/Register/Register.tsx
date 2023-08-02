@@ -4,17 +4,18 @@ import { useHistory } from "react-router";
 import { useForm } from "react-hook-form";
 
 import { RegisterFormValue } from "../../interfaces/registro";
-import { axiosRegister } from "../../axios/auth";
 import TennisBallComponent from "../../components/TennisBall";
 import Footer from "../../components/Footer";
 
 import "./Register.scss";
+import { useAuth } from "../../hooks/useAuth";
 
 const RegisterPage: React.FC<any> = () => {
 
-    const [userExists, setUserExists] = useState(false);
     const [successAlert, setSuccessAlert] = useState(false);
     const history = useHistory();
+
+    const { onRegister } = useAuth();
     const { register, handleSubmit, formState: { errors }, clearErrors, reset, setError } = useForm<RegisterFormValue>({
         defaultValues: {
             nombre: "",
@@ -32,16 +33,13 @@ const RegisterPage: React.FC<any> = () => {
     }
 
     const onSubmit = async (data: RegisterFormValue) => {
-        console.log("registro", data)
-        const register = await axiosRegister(data);
-        if (register?.res) {
-            if (userExists) setUserExists(false);
+        const resp = await onRegister(data);
+        if (resp.res) {
             reset();
-            setSuccessAlert(true)
+            setSuccessAlert(true);
         } else {
-            switch (register?.status) {
+            switch (resp.status) {
                 case "El usuario ya existe":
-                    setUserExists(true);
                     setError("email", {type:"custom", message: "El usuario ya existe"});
                     break;
             }
@@ -103,6 +101,7 @@ const RegisterPage: React.FC<any> = () => {
                             </IonItem>
                             <div className="error-message" style={errors.email ? { opacity: 1 } : undefined}>
                                 {errors.email?.type === 'required' && <p role="alert" className="error-alert">Debe ingresar un email</p>}
+                                {errors.email && <p role="alert" className="error-alert">{errors.email.message}</p>}
                             </div>
                         </IonCol>
                     </IonRow>
@@ -110,7 +109,7 @@ const RegisterPage: React.FC<any> = () => {
                         <IonCol size="10" offset="1">
                             <IonItem fill="solid">
                                 <IonLabel position="floating">Contrasena*</IonLabel>
-                                <IonInput {...register("password", { required: true })} placeholder="Ingresa una contrasena"></IonInput>
+                                <IonInput {...register("password", { required: true })} placeholder="Ingresa una contrasena" type="password"></IonInput>
                             </IonItem>
                             <div className="error-message" style={errors.password ? { opacity: 1 } : undefined}>
                                 {errors.password?.type === 'required' && <p role="alert" className="error-alert">Debe ingresar una contrasena</p>}

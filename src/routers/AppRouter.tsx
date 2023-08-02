@@ -13,11 +13,12 @@ import RegisterPage from "../pages/Register/Register";
 import InscripcionPage from "../pages/Inscripcion/Inscripcion";
 import ResultadoPage from "../pages/Resultados/Resultados";
 import PosicionesPage from "../pages/Posiciones/Posiciones";
+import PreInscripcionPage from "../pages/PreInscripcion/PreInscripcion";
 
 export const AppRouter = () => {
   
     const { isLoggedIn } = useContext(AuthContext);
-    console.log("isLoggedIn app router", isLoggedIn)
+
     return (
       <>
         <IonReactRouter>
@@ -45,6 +46,9 @@ export const AppRouter = () => {
             </ProtectedRoute>
             <ProtectedRoute path="/posiciones" exact={true} isLogged={isLoggedIn}>
               <PosicionesPage />
+            </ProtectedRoute>
+            <ProtectedRoute path="/pre-inscripciones" exact={true} isLogged={isLoggedIn}>
+              <PreInscripcionPage />
             </ProtectedRoute>
           </IonRouterOutlet>
         </IonReactRouter>

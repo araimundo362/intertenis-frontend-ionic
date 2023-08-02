@@ -1,12 +1,13 @@
 import { useContext } from "react";
+
 import { AuthContext } from "../../context/AuthContext";
 import { ResultadosContext } from "../../context/ResultadosContext";
-
-import "./CargarResultadoComponent.scss";
 import EleccionJugadorForm from "../EleccionJugadorForm";
 import ResultadoForm from "../ResultadoForm";
 import FechaForm from "../FechaForm";
 import CheckpointResultado from "../CheckpointResultado";
+
+import "./CargarResultadoComponent.scss";
 
 const CargarResultadoComponent: React.FC = () => {
     const { step } = useContext(ResultadosContext);

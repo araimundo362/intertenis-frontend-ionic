@@ -21,7 +21,7 @@ const EleccionJugadorForm: React.FC<EleccionJugadorFormType> = ({ categoria, idJ
 
     const { nextStep, setRival } = useContext(ResultadosContext);
 
-    const { players, isLoading, getRivals } = useLiga();
+    const { players, getRivals } = useLiga();
 
     useEffect(() => {
         getRivals(categoria);
@@ -44,16 +44,16 @@ const EleccionJugadorForm: React.FC<EleccionJugadorFormType> = ({ categoria, idJ
                 </IonCol>
             </IonRow>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <IonRow>
+                {players.length && <IonRow>
                     <IonCol size="10" offset="1">
-                        <IonSelect disabled={players.filter((jugador) => jugador._id !== idJugador).length === 0} interface="popover" placeholder="Rival*" {...register("_id", {required: true})}>
+                        <IonSelect className="eleccion-jugador-form__select-rival" disabled={players.filter((jugador) => jugador._id !== idJugador).length === 0} interface="action-sheet" placeholder="Rival*" {...register("_id", {required: true})}>
                             {players.filter((jugador) => jugador._id !== idJugador).map((jugador) => <IonSelectOption value={jugador._id}>{jugador.nombre}</IonSelectOption>)}
                         </IonSelect>
                         <div className="error-message" style={errors._id ? { opacity: 1 } : undefined}>
                                 {errors._id?.type === 'required' && <p role="alert" className="error-alert">Debe seleccionar un jugador</p>}
                         </div>
                     </IonCol>
-                </IonRow>
+                </IonRow>}
                 <IonRow>
                     <IonCol className="eleccion-jugador-form__submit-column">
                         <IonButton type="submit">Siguiente</IonButton>

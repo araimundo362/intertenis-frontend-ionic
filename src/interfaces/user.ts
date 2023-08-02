@@ -2,9 +2,9 @@ export type JugadorData = {
     nombre: string,
     apellido: string,
     apodo?: string,
-    email: string,
     isAdmin: boolean,
-    _id: string
+    _id: string,
+    telefono: string
 }
 
 export type Jugador = {

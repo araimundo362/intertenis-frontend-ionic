@@ -4,7 +4,7 @@ import { useHistory } from "react-router";
 
 import "./LoginForm.scss";
 import { useAuth } from "../../hooks/useAuth";
-import { OK, USER_NOT_FOUND } from "../../constants/constants";
+import { OK, USER_NOT_FOUND, WRONG_PASSWORD } from "../../constants/constants";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
@@ -43,7 +43,10 @@ const LoginForm: React.FC = () => {
                 history.push("/home");
                 break;
             case USER_NOT_FOUND:
-                setError("user", {type: "custom", message: "El usuario o contrasena ingresados no es correcta"});
+                setError("password", {type: "custom", message: "El usuario o contraseña ingresados no es correcta"});
+                break;
+            case WRONG_PASSWORD:
+                setError("password", {type: "custom", message: "El usuario o contraseña ingresados no es correcta"});
                 break;
     }
 }
@@ -56,7 +59,6 @@ const LoginForm: React.FC = () => {
                             </IonItem>
                             <div className="error-message" style={errors.user ? { opacity: 1 } : undefined}>
                                 {errors.user?.type === 'required' && <p role="alert" className="error-alert">Debe ingresar un email</p>}
-                                {errors.user && <p role="alert" className="error-alert">{errors.user.message}</p>}
                             </div>
                         </IonCol>
                     </IonRow>
@@ -66,8 +68,9 @@ const LoginForm: React.FC = () => {
                                 <IonLabel position="floating">Contrasena*</IonLabel>
                                 <IonInput {...register("password", { required: true })} type="password" placeholder="Ingresa la contrasena"></IonInput>
                             </IonItem>
-                            <div className="error-message" style={errors.user ? { opacity: 1 } : undefined}>
+                            <div className="error-message" style={errors.password ? { opacity: 1 } : undefined}>
                                 {errors.password?.type === 'required' && <p role="alert" className="error-alert">Debe ingresar su contrasena</p>}
+                                {errors.password && <p role="alert" className="error-alert">{errors.password.message}</p>}
                             </div>
                             <div className="forgot-password-container">
                                 <span className="forgot-password-container__forgot-label" onClick={goToForgotPassword}>Olvide mi contrasena</span>

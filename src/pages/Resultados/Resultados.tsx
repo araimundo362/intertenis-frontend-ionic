@@ -24,7 +24,7 @@ const ResultadoPage: React.FC = () => {
     const adminComponent = <DefinirComponent />
     return <IonPage>
             <Header label="Cargar Resultado" action={goBack} />
-                <IonContent>
+                <IonContent className="background-home">
                     {userData.isAdmin ? adminComponent : isNotAdmin}
                 </IonContent>
     </IonPage>

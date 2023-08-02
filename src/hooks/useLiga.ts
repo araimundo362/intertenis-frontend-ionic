@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { axiosGetTablaPosiciones, getPlayersByCategory } from "../axios/liga";
 import { Jugador } from "../interfaces/user";
 import { ConfirmacionResultado, ResultadoRequest } from "../interfaces/resultado";
 import { axiosCargarResultado, axiosConfirmarResultado } from "../axios/resultados";
-import { Posicion, ZonasJugadores } from "../interfaces/posiciones";
+import { ZonasJugadores } from "../interfaces/posiciones";
 
 export const useLiga = () => {
 
@@ -20,6 +20,7 @@ export const useLiga = () => {
         try {
             const jugadores: Jugador[] = await getPlayersByCategory(categoria);
             if (jugadores) {
+                
                 setPlayers(jugadores);
                 setIsLoading(false);
             } 
@@ -31,7 +32,6 @@ export const useLiga = () => {
     const cargarResultado = async (resultado: ResultadoRequest) => {
         const response = await axiosCargarResultado(resultado);
 
-        console.log("veo la response en cargar Resultado", response)
         switch (response) {
             case "FIRST_RESULT_SUCCESS":
                 setAlertaResultadoPendienteConfirmacion(true);
@@ -49,12 +49,6 @@ export const useLiga = () => {
         setIsLoading(true);
         try {
             const table: ZonasJugadores[] = await axiosGetTablaPosiciones(categoria);
-
-            /*const tablaPosiciones: Posicion[] = table.map((rec, index) => {
-                return {posicion: index + 1, ...rec}
-            });*/
-
-            console.log("veo la table recibida", table)
 
             return table;
         } catch (e) {

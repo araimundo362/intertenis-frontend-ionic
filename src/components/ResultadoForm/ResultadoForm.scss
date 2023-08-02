@@ -1,5 +1,10 @@
 .resultado-form {
 
+    &__score-input {
+        --background: silver !important;
+        --border-radius: 10px !important
+    }
+
     &__radio-column {
         display: flex;
         align-items: center;
@@ -16,5 +21,7 @@
 
 .h4-label {
     margin: 0;
-    font-size: 23px;
+    font-size: 20px;
+    font-weight: 600;
+    color: silver
 }
