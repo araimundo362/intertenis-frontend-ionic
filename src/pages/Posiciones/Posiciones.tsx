@@ -19,21 +19,27 @@ const PosicionesPage: React.FC = () => {
 
     const { categoria } = useContext(AuthContext);
 
+    console.log("categoria ", categoria);
     const { getPosiciones, isLoading} = useLiga();
     
-    const [categoriaTabla, setCategoriaTabla] = useState(categoria)
+   // const [categoriaTabla, setCategoriaTabla] = useState(categoria)
     const [table, setTable] = useState<ZonasJugadores[]>([]);
 
-    const updateTabla = async () => {
-        const tablaPosiciones = await getPosiciones(categoriaTabla);
-        setTable(tablaPosiciones);
+    const updateTabla = async (categoria: number) => {
+        if (categoria) {
+            const tablaPosiciones = await getPosiciones(categoria);
+            setTable(tablaPosiciones);
+        } else {
+            setTable([]);
+        }
     }
+
     useEffect(() => {
-        updateTabla();
-    }, [categoriaTabla])
+        updateTabla(categoria);
+    }, [])
 
     const onSelectTable = (cat: number) => {
-        setCategoriaTabla(cat);
+        updateTabla(cat);
     };
 
     return <IonPage>
@@ -51,7 +57,11 @@ const PosicionesPage: React.FC = () => {
                                 </IonSelect>
                         </IonCol>
                     </IonRow>
-                    {table.length === 0 && <h3>No se han inscripto jugadores a la categoria!</h3> }
+                    {table.length === 0 && <IonRow>
+                            <IonCol size="12" className="flex-align-center">
+                                <h3 className="text-empty-players">No se han inscripto jugadores a la categoria!</h3>
+                            </IonCol>
+                        </IonRow> }
                     {table.length === 1 && <>
                         <IonItem lines="inset" className="headers-tabla">
                         <IonRow className="width-100">
@@ -68,7 +78,7 @@ const PosicionesPage: React.FC = () => {
                         </IonRow>
                         </IonItem>
                         {table[0].jugadores.map((elem, index) => <>
-                                        <IonItem lines="full" className="transparent-background">
+                                        <IonItem lines="full" className="transparent-background" key={elem.nombre}>
                                             <IonRow className="width-100">
                                                 <IonCol size="1" className="flex-align-center column-border"><h5 className={`${(index + 1) % 2 === 0 ? "posicion-par-letra" : "posicion-impar-letra"} size-numbers`}>{index + 1}</h5> </IonCol>
                                                 <IonCol size="3" className="fixed-width column-border flex-align-center withBorderContinue "><h4 className={`${(index + 1) % 2 === 0 ? "posicion-par-letra" : "posicion-impar-letra"} size-numbers`}>{elem.nombre}</h4></IonCol>
@@ -105,7 +115,7 @@ const PosicionesPage: React.FC = () => {
                             <IonCol size="1" className="flex-align-center"><h5 className="size-numbers">/</h5></IonCol>
                         </IonRow>
                     </IonItem>
-                    {zona.jugadores.map((elem, index) => <IonItem lines="full" className="transparent-background">
+                    {zona.jugadores.map((elem, index) => <IonItem lines="full" className="transparent-background" key={elem.nombre}>
                                         <IonRow className="width-100">
                                                 <IonCol size="1" className="flex-align-center column-border"><h5 className={`${(index + 1) % 2 === 0 ? "posicion-par-letra" : "posicion-impar-letra"} size-numbers`}>{index + 1}</h5> </IonCol>
                                                 <IonCol size="3" className="fixed-width column-border flex-align-center withBorderContinue "><h4 className={`${(index + 1) % 2 === 0 ? "posicion-par-letra" : "posicion-impar-letra"} size-numbers`}>{elem.nombre}</h4></IonCol>

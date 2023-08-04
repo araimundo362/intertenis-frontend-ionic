@@ -82,33 +82,43 @@ const PreInscripcionPage: React.FC = () => {
         <Header label="Inscripcion" action={goBack}/>
         <IonContent className="background-home">
             {isLoading && <p>Cargando...</p>}
-            {!isLoading && listado?.map((jugador, index) => <IonRow>
-                <IonCol size="12">
-                <IonItem lines="full" className="preinscripcion-item">
-                    <div className="preinscripcion-item__content">
-                    <div className="preinscripcion-item__container-one">
-                    <IonIcon icon={tennisball}  size="large" className="size-ball"/>
-                    <div>
-                        <h5 className="jugador-item__label-nombre">{jugador.nombre} {jugador.apellido}</h5>
-                        <h6 className="jugador-item__label-telefono">Tel: {jugador.telefono}</h6>
-                    </div>
-                </div>
-                <IonButton className="preinscripcion-item__button" onClick={() => setModalDataInscripcion(index)}>
-                    <IonIcon className="preinscripcion-item__button__icon" slot="icon-only" icon={createOutline} color="primary"></IonIcon>
-                </IonButton>
-                    </div>
-            </IonItem>
-                </IonCol>
-            </IonRow>)}
-
-
-            {jugadorState && <ModalPreInscripcionForm isOpen={openModal} setIsOpenModal={setOpenModal} jugador={jugadorState} setInscripcion={confirmInscripcion} />}
-
-            <IonFab className="fab-row-button">
+            {listado.length === 0 && <IonRow>
+                            <IonCol size="12" className="flex-align-center">
+                                <h3 className="text-empty-players">No hay jugadores preinscriptos al momento!</h3>
+                            </IonCol>
+                        </IonRow>}
+            {!isLoading && listado?.map((jugador, index) => <>
+            
+                <IonRow>
+                    <IonCol size="12">
+                        <IonItem lines="full" className="preinscripcion-item">
+                            <div className="preinscripcion-item__content">
+                                <div className="preinscripcion-item__container-one">
+                                    <IonIcon icon={tennisball}  size="large" className="size-ball"/>
+                                    <div>
+                                        <h5 className="jugador-item__label-nombre">{jugador.nombre} {jugador.apellido}</h5>
+                                        <h6 className="jugador-item__label-telefono">Tel: {jugador.telefono}</h6>
+                                    </div>
+                                </div>
+                                <IonButton className="preinscripcion-item__button" onClick={() => setModalDataInscripcion(index)}>
+                                    <IonIcon className="preinscripcion-item__button__icon" slot="icon-only" icon={createOutline} color="primary"></IonIcon>
+                                </IonButton>
+                            </div>
+                        </IonItem>
+                    </IonCol>
+                </IonRow>
+                
+                
+                <IonFab className="fab-row-button">
                 <IonFabButton onClick={inscript}>
                     <IonIcon icon={checkmarkDone}></IonIcon>
                 </IonFabButton>
             </IonFab>
+            </> 
+            )}
+
+
+            {jugadorState && <ModalPreInscripcionForm isOpen={openModal} setIsOpenModal={setOpenModal} jugador={jugadorState} setInscripcion={confirmInscripcion} />}
 
             <Alert isOpen={openSuccessAlert} closeAlert={onCloseAlert} header="Correcto" subHeader="Se han guardado todos los cambios" message="A partir de ahora, los jugadores confirmados ya pueden cargar resultados"  buttons={["Ok!"]}/>
         </IonContent>
