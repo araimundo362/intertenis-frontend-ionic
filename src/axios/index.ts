@@ -3,7 +3,7 @@ import { Preferences } from '@capacitor/preferences';
 
 
 const instance = axios.create({
-    baseURL: "http://localhost:3000",
+    baseURL: "https://rich-pea-coat-fly.cyclic.app",
   });
 
 // Interceptor de las requests que les agrega el token
