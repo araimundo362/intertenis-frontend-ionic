@@ -1,10 +1,9 @@
-import { IonButton, IonContent, IonDatetime, IonDatetimeButton, IonHeader, IonIcon, IonModal, IonPage } from "@ionic/react";
-import { arrowBack } from "ionicons/icons";
+import { IonContent, IonPage } from "@ionic/react";
 import { useContext } from "react";
 import { useHistory } from "react-router";
 import CargarResultadoComponent from "../../components/CargarResultadoComponent";
 import { AuthContext } from "../../context/AuthContext";
-import { ResultadosContext, ResultadosContextProvider } from "../../context/ResultadosContext";
+import { ResultadosContextProvider } from "../../context/ResultadosContext";
 import Header from "../../components/Header";
 import DefinirComponent from "../../components/DefinirResultado";
 

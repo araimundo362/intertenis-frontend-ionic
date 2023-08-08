@@ -1,4 +1,4 @@
-import React, { useState, ReactNode, useEffect, useContext } from 'react';
+import React, { useState, ReactNode, useEffect } from 'react';
 import { JugadorData } from '../interfaces/user';
 
 type AuthContextProps = {

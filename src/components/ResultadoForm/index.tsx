@@ -1,4 +1,4 @@
-import { IonButton, IonCol, IonInput, IonItem, IonLabel, IonNote, IonRadio, IonRadioGroup, IonRow, IonText } from "@ionic/react";
+import { IonButton, IonCol, IonInput, IonItem, IonLabel, IonRadio, IonRadioGroup, IonRow, IonText } from "@ionic/react";
 import { useContext, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { ResultadosContext } from "../../context/ResultadosContext";

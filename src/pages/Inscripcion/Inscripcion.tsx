@@ -1,5 +1,4 @@
-import { IonButton, IonCol, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonPage, IonRow, IonSelect, IonSelectOption } from "@ionic/react";
-import { arrowBack } from "ionicons/icons";
+import { IonButton, IonCol, IonContent, IonInput, IonItem, IonLabel, IonPage, IonRow } from "@ionic/react";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router";
@@ -18,9 +17,8 @@ const InscripcionPage: React.FC = () => {
     const {userData } = useContext(AuthContext);
 
     const [alertOpen, setAlertOpen] = useState(false);
-    const [showToast, setShowToast] = useState(false); // Toast para fallas de api-inscripcion
 
-    const { register, formState: { errors }, handleSubmit } = useForm<InscripcionFormValues>({
+    const { register, handleSubmit } = useForm<InscripcionFormValues>({
         defaultValues: {
             nombre: userData.nombre,
             apellido: userData.apellido,
@@ -37,8 +35,6 @@ const InscripcionPage: React.FC = () => {
         const res =  await addInscripto(inscripto);
         if (res) {
             setAlertOpen(true);
-        } else {
-            setShowToast(true);
         }
     }
 
@@ -86,17 +82,3 @@ const InscripcionPage: React.FC = () => {
 };
 
 export default InscripcionPage;
-
-/*<div className="error-message" style={errors.password ? { opacity: 1 } : undefined}>
-                                {errors.password?.type === 'required' && <p role="alert" className="error-alert">Debe ingresar una contrasena</p>}
-                            </div>
-                            
-                            
-                            <IonHeader className="header-inscripcion">
-                    <div className="header-inscripcion__container">
-                        <IonButton className="header__arrow-back-button">
-                            <IonIcon slot="icon-only" icon={arrowBack} onClick={goBack}></IonIcon>
-                        </IonButton>
-                        <h3 className="header__container__label">Inscripcion</h3>
-                    </div>
-                </IonHeader>*/

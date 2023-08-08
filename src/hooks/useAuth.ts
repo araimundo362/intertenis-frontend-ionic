@@ -12,7 +12,7 @@ export const useAuth = () => {
 
     const {setValue} = useStorage();
 
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, ] = useState(false);
 
     const login = async (email: string, password: string) => {
             const respuesta: LoginResponse = await axiosLogin(email, password);

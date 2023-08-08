@@ -25,7 +25,7 @@ const EleccionJugadorForm: React.FC<EleccionJugadorFormType> = ({ categoria, idJ
 
     useEffect(() => {
         getRivals(categoria);
-    }, []);
+    }, []);// eslint-disable-line react-hooks/exhaustive-deps
     
     const onSubmit = (data: EleccionFormType) => {
         const userRival = players.find((pl) => pl._id === data._id);

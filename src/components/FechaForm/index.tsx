@@ -1,7 +1,6 @@
 import { IonButton, IonCol, IonDatetime, IonRow } from "@ionic/react";
 import { useContext } from "react";
 import { ResultadosContext } from "../../context/ResultadosContext";
-import { useForm } from "react-hook-form";
 
 const FechaForm: React.FC = () => {
 

@@ -1,11 +1,9 @@
-import { IonButton, IonCol, IonContent, IonFooter, IonGrid, IonHeader, IonImg, IonItem, IonLabel, IonLoading, IonMenu, IonPage, IonRow, IonTitle, IonToolbar } from "@ionic/react"
+import { IonCol, IonContent, IonHeader, IonImg, IonLoading, IonPage, IonRow } from "@ionic/react"
 import { useContext, useEffect, useState } from "react";
 
 import HomeButton from "../../components/HomeButton";
-import { useStorage } from "../../hooks/useStorage";
 import { AuthContext } from "../../context/AuthContext";
 
-import RED from "../../assets/Red_.jpg";
 import LOGO from "../../assets/logo_intertenis.png";
 import "./Home.scss";
 import Footer from "../../components/Footer";
@@ -13,7 +11,7 @@ import { checkMyInscripcion } from "../../axios/inscripcion";
 
 const HomePage: React.FC = () => {
 
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, ] = useState(false);
 
     const { userData, inscripcion, setInscripcion, setCategoria, setEquipo } = useContext(AuthContext);
 
@@ -25,7 +23,7 @@ const HomePage: React.FC = () => {
                 setEquipo(inscripcionStatus.equipo)
             });
         }
-    }, [])
+    }, [])// eslint-disable-line react-hooks/exhaustive-deps
 
     return (
             <IonPage>

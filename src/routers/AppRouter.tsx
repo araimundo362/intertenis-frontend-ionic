@@ -1,8 +1,7 @@
-import { IonContent, IonHeader, IonItem, IonLabel, IonMenu, IonRouterOutlet, IonTitle, IonToolbar } from "@ionic/react"
+import { IonRouterOutlet } from "@ionic/react"
 import { IonReactRouter } from "@ionic/react-router"
-import { caretForwardOutline } from "ionicons/icons";
-import { useContext, useEffect } from "react";
-import { Redirect, Route, Switch } from "react-router"
+import { useContext } from "react";
+import { Redirect, Route } from "react-router"
 import ProtectedRoute from "../components/ProtectedRoute";
 import { AuthContext } from "../context/AuthContext";
 import HomePage from "../pages/Home/Home";

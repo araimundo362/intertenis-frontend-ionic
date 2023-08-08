@@ -6,7 +6,7 @@ import { PreInscripcionFormValues } from "../../pages/PreInscripcion/PreInscripc
 
 const ModalPreInscripcionForm: React.FC<ModalPreInscripcionFormType> = ({ isOpen, setIsOpenModal, jugador, setInscripcion }) => {
 
-    const { register, formState: { errors }, handleSubmit, reset, getValues, setValue } = useForm<PreInscripcionFormValues>({
+    const { register, formState: { errors }, handleSubmit, reset, setValue } = useForm<PreInscripcionFormValues>({
         defaultValues: {
             equipo: "",
             categoria: 0,

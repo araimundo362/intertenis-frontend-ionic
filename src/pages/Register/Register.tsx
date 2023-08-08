@@ -16,7 +16,7 @@ const RegisterPage: React.FC<any> = () => {
     const history = useHistory();
 
     const { onRegister } = useAuth();
-    const { register, handleSubmit, formState: { errors }, clearErrors, reset, setError } = useForm<RegisterFormValue>({
+    const { register, handleSubmit, formState: { errors }, reset, setError } = useForm<RegisterFormValue>({
         defaultValues: {
             nombre: "",
             apellido: "",

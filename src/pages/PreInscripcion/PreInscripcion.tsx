@@ -30,7 +30,7 @@ const PreInscripcionPage: React.FC = () => {
     const [jugadorState, setJugadorState] = useState<PreInscripcion>();
     const [indexJugador, setIndexJugador] = useState<number>(-1);
 
-    const { data, error, listadoPreInscripcion} = usePreInscripcion();
+    const { listadoPreInscripcion} = usePreInscripcion();
 
     const listado = useMemo(() => listadoPreInscripcion, [listadoPreInscripcion]);
 
@@ -48,10 +48,6 @@ const PreInscripcionPage: React.FC = () => {
             setIndexJugador(index);
             setJugadorState(listado[index])
         }
-    }
-
-    const onCloseModal = () => {
-        setOpenModal(false)
     }
 
     const confirmInscripcion = (inscripcionData: PreInscripcionFormValues) => {

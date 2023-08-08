@@ -1,4 +1,4 @@
-import React, { useState, ReactNode, useEffect, useContext } from 'react';
+import React, { useState, ReactNode } from 'react';
 import { InfoJugador } from '../interfaces/resultado';
 
 type ResultadosContextProps = {

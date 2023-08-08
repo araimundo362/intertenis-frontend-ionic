@@ -19,8 +19,7 @@ const PosicionesPage: React.FC = () => {
 
     const { categoria } = useContext(AuthContext);
 
-    console.log("categoria ", categoria);
-    const { getPosiciones, isLoading} = useLiga();
+    const { getPosiciones } = useLiga();
     
    // const [categoriaTabla, setCategoriaTabla] = useState(categoria)
     const [table, setTable] = useState<ZonasJugadores[]>([]);
@@ -36,7 +35,7 @@ const PosicionesPage: React.FC = () => {
 
     useEffect(() => {
         updateTabla(categoria);
-    }, [])
+    }, [])// eslint-disable-line react-hooks/exhaustive-deps
 
     const onSelectTable = (cat: number) => {
         updateTabla(cat);

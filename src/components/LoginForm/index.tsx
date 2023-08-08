@@ -1,5 +1,5 @@
-import { IonButton, IonCol, IonContent, IonFooter, IonImg, IonInput, IonItem, IonLabel, IonPage, IonRow } from "@ionic/react";
-import { useForm, useFormContext } from "react-hook-form";
+import { IonButton, IonCol, IonInput, IonItem, IonLabel, IonRow } from "@ionic/react";
+import { useForm } from "react-hook-form";
 import { useHistory } from "react-router";
 
 import "./LoginForm.scss";
@@ -16,7 +16,7 @@ export type LoginFormValues = {
 const LoginForm: React.FC = () => {
 
     const history = useHistory();
-    const { register, handleSubmit, formState: { errors }, clearErrors, setError, reset } = useForm<LoginFormValues>({
+    const { register, handleSubmit, formState: { errors }, setError, reset } = useForm<LoginFormValues>({
         defaultValues: {
             user: "",
             password: ""

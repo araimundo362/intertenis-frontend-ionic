@@ -58,7 +58,7 @@ export const useLiga = () => {
    }
    
    const confirmarResultado = async (resultadoConfirmado: ConfirmacionResultado) => {
-        const response = await axiosConfirmarResultado(resultadoConfirmado);
+        await axiosConfirmarResultado(resultadoConfirmado);
         return "CONFIRM";
    }
 
