@@ -11,3 +11,14 @@
         justify-content: center;
     }
 }
+
+.custom-datetime {
+    --background: black;
+
+}
+
+ion-datetime-button::part(native) {
+    width: 100%;
+    height: 50px;
+    background: silver;
+  }
