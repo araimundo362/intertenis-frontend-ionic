@@ -15,7 +15,8 @@ import "./PreInscripcion.scss";
 export type PreInscripcionFormValues = {
     equipo: string,
     zona: number,
-    categoria: number
+    categoria: number,
+    estadoInscripcion: string
 }
 
 const PreInscripcionPage: React.FC = () => {
@@ -51,16 +52,15 @@ const PreInscripcionPage: React.FC = () => {
     }
 
     const confirmInscripcion = (inscripcionData: PreInscripcionFormValues) => {
-
         if (listado !== undefined && jugadorState !== undefined) {
-            const newJugadorState: PreInscripcion = {...jugadorState, estado:"INSCRIPTO", categoria: inscripcionData.categoria, zona: inscripcionData.zona, equipo: inscripcionData.equipo}
+            const newJugadorState: PreInscripcion = {...jugadorState, estado: inscripcionData.estadoInscripcion, categoria: inscripcionData.categoria, zona: inscripcionData.zona, equipo: inscripcionData.equipo}
             listado[indexJugador] = newJugadorState
             setOpenModal(false)
         }
     }
 
     const inscript = async () => {
-        const listadoInscriptos = listado?.filter((jugador) => jugador.estado === "INSCRIPTO");
+        const listadoInscriptos = listado?.filter((jugador) => jugador.estado === "INSCRIPTO" || jugador.estado === "RECHAZADO");
         if (listadoInscriptos !== undefined) {
             const response = await confirmarInscripcion(listadoInscriptos);
             if (response) {
@@ -103,15 +103,13 @@ const PreInscripcionPage: React.FC = () => {
                         </IonItem>
                     </IonCol>
                 </IonRow>
-                
-                
-                <IonFab className="fab-row-button">
+            </> 
+            )}
+            {listado.length > 0 &&  <IonFab className="fab-row-button">
                 <IonFabButton onClick={inscript}>
                     <IonIcon icon={checkmarkDone}></IonIcon>
                 </IonFabButton>
-            </IonFab>
-            </> 
-            )}
+            </IonFab>}
 
 
             {jugadorState && <ModalPreInscripcionForm isOpen={openModal} setIsOpenModal={setOpenModal} jugador={jugadorState} setInscripcion={confirmInscripcion} />}

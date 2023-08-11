@@ -1,0 +1,32 @@
+.justify-content-button {
+    display: flex;
+    justify-content: center;
+}
+
+.margin10 {
+    margin-top: 10px;
+}
+.content-modal {
+    --background: khaki;
+}
+
+.select-modal {
+    background: darkkhaki;
+    border-radius: 5px;
+    height: 50px;
+}
+
+ion-modal.stack-modal {
+    --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
+    --backdrop-opacity: var(--ion-backdrop-opacity, 0.32);
+  }
+
+ion-modal::part(backdrop) {
+    background: rgba(209, 213, 219);
+    opacity: 1;
+  }
+  
+ion-modal ion-toolbar {
+    --background: goldenrod;
+    --color: white;
+  }
