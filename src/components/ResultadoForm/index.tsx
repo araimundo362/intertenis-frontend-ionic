@@ -1,9 +1,10 @@
-import { IonButton, IonCol, IonInput, IonItem, IonLabel, IonRadio, IonRadioGroup, IonRow, IonText } from "@ionic/react";
-import { useContext, useRef } from "react";
+import { IonAlert, IonButton, IonCol, IonIcon, IonInput, IonItem, IonLabel, IonRadio, IonRadioGroup, IonRow, IonText } from "@ionic/react";
+import React, { useContext, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { ResultadosContext } from "../../context/ResultadosContext";
 
 import "./ResultadoForm.scss";
+import { checkmarkCircleSharp } from "ionicons/icons";
 
 type ResultadoFormType = {
     primerSet: string,
@@ -15,13 +16,15 @@ type ResultadoFormType = {
 
 const ResultadoForm: React.FC = () => {
 
-    const primerSetInputRef = useRef<HTMLIonInputElement>(null);
-    const segundoSetInputRef = useRef<HTMLIonInputElement>(null);
-    const tercerSetInputRef = useRef<HTMLIonInputElement>(null);
-
     const { handleSubmit, register, formState: { errors }, setValue, getValues } = useForm<ResultadoFormType>();
 
     const { prevStep, nextStep, setStatus, setResultado } = useContext(ResultadosContext);
+
+    const [isSelected, setIsSelected] = useState("");
+
+    const primerSetInputRef = useRef<HTMLIonInputElement>(null);
+    const segundoSetInputRef = useRef<HTMLIonInputElement>(null);
+    const tercerSetInputRef = useRef<HTMLIonInputElement>(null);
 
     const onSubmit = (data: ResultadoFormType) => {
         let resultadoFinal = getValues("primerSet") + " " + getValues("segundoSet");
@@ -34,13 +37,11 @@ const ResultadoForm: React.FC = () => {
     };
 
     const setStatusValue = (value: "GANE" | "PERDI") => {
-        setValue("status", value)
+        setIsSelected(value);
+        setValue("status", value);
     }
 
-    const handlePrimerSetInput = (value: string | null | undefined) => {
-        if (value && value.length === 1 && primerSetInputRef.current) {
-            primerSetInputRef.current.value = value + "-";
-        }
+    const handlePrimerSetInput = (value: any) => {
         if (value?.length === 3) {
             setValue("primerSet", value);
             segundoSetInputRef.current?.setFocus();
@@ -48,9 +49,6 @@ const ResultadoForm: React.FC = () => {
     }
 
     const handleSegundoSetInput = (value: string | null | undefined) => {
-        if (value && value.length === 1 && segundoSetInputRef.current) {
-            segundoSetInputRef.current.value = value + "-";
-        }
         if (value?.length === 3) {
             setValue("segundoSet", value);
             tercerSetInputRef.current?.setFocus();
@@ -58,18 +56,13 @@ const ResultadoForm: React.FC = () => {
     }
 
     const handleTercerSetInput = (value: string | null | undefined) => {
-
-        if (value && value.length === 1 && tercerSetInputRef.current) {
-            tercerSetInputRef.current.value = value + "-";
-        }
         if (value?.length === 3) {
             tercerSetInputRef.current?.setBlur();
             setValue("tercerSet", value);
         }
-
     }
 
-    return <>
+    return <React.Fragment>
         <IonRow>
             <IonCol size="10" offset="1">
                 <h3 className="cargar-resultado__label">Decinos como salio el partido!</h3>
@@ -85,7 +78,7 @@ const ResultadoForm: React.FC = () => {
             <IonCol size="4">
                 <IonItem fill="solid" className="resultado-form__score-input">
                     <IonLabel position="floating">1er set*</IonLabel>
-                    <IonInput {...register("primerSet", {required: true})} ref={primerSetInputRef} max={2} onIonChange={(ev) => handlePrimerSetInput(ev.detail.value)} />
+                    <IonInput {...register("primerSet", {required: true})} ref={primerSetInputRef} max={2} onIonChange={(ev) => handlePrimerSetInput(ev)} />
                 </IonItem>
             </IonCol>
             <IonCol size="4">
@@ -102,32 +95,22 @@ const ResultadoForm: React.FC = () => {
             </IonCol>
         </IonRow>
         <IonRow>
-            <IonCol>
-            <IonRadioGroup {...register("status", { required: true })} onIonChange={(ev) => setStatusValue(ev.detail.value)}>
-                        <IonRow>
-                            <IonCol size="5" offset="1" className="resultado-form__radio-column">
-                                <IonText>
-                                    <h4 className="h4-label">Gane</h4>
-                                </IonText>
-                                <IonRadio value={"GANE"} className="resultado-form__radio" />
-                            </IonCol>
-                            <IonCol size="5" offset="1" className="resultado-form__radio-column">
-                                <IonText>
-                                    <h4 className="h4-label">Perdi</h4>
-                                </IonText>
-                                <IonRadio value="PERDI" className="resultado-form__radio"/>
-                            </IonCol>
-                        </IonRow>
-        </IonRadioGroup>
-        <div className="error-message" style={errors.status ? { opacity: 1 } : undefined}>
-                    {errors.status?.type === 'required' && <p role="alert" className="error-alert">Debe marcar como salio en el partido</p>}
-        </div>
+            <IonCol size="6">
+                <IonButton onClick={() => setStatusValue("GANE")} className={`sede-button ${isSelected === "GANE" ? "button-color-active" : ""}`} fill="outline">
+                    GANE
+                   {isSelected === "GANE" && <IonIcon slot="end" icon={checkmarkCircleSharp}></IonIcon>}
+                </IonButton>
             </IonCol>
-
+            <IonCol size="6">
+            <IonButton onClick={() => setStatusValue("PERDI")}  className={`sede-button ${isSelected === "PERDI" ? "button-color-active" : ""}`} fill="outline">
+                    PERDI
+                   {isSelected === "PERDI" && <IonIcon slot="end" icon={checkmarkCircleSharp}></IonIcon>}
+                </IonButton>
+            </IonCol>
         </IonRow>
         <IonRow>
             <IonCol className="eleccion-jugador-form__submit-column"> 
-                <IonButton className="width-button-50" type="submit">
+                <IonButton  disabled={isSelected === ""} className="width-button-50" type="submit">
                 Siguiente
                 </IonButton>
             </IonCol>
@@ -140,24 +123,8 @@ const ResultadoForm: React.FC = () => {
                 </IonButton>
             </IonCol>
         </IonRow>
-    </>
+
+    </React.Fragment>
 };
 
 export default ResultadoForm;
-
-/*
-
- <IonRow>
-            <IonCol size="10" offset="1">
-                <IonItem fill="solid" className="login-inputs">
-                    <IonLabel position="floating">Resultado*</IonLabel>
-                    <IonInput {...register("resultado", {required: true})} placeholder="Formato: 62 64 / 75 36 75"  />
-                    <IonNote slot="helper">Formato: 61 63 // 26 64 76 // 64 60</IonNote>
-                </IonItem>
-                <div className="error-message" style={errors.resultado ? { opacity: 1 } : undefined}>
-                    {errors.resultado?.type === 'required' && <p role="alert" className="error-alert">Debe ingresar un resultado</p>}
-                </div>
-            </IonCol>
-        </IonRow>
-
-*/

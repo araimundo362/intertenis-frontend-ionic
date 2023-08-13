@@ -25,3 +25,18 @@
     font-weight: 600;
     color: silver
 }
+
+.sede-button {
+    --border-radius: 10px;
+    height: 70px;
+    --border-width: 1px 1px 1px 10px;
+    --color: darkgray;
+    margin: 10px;
+    --border-color: gray;
+    width: 90%;
+}
+
+.button-color-active {
+    --color: orange !important;
+    --border-color: orange !important;
+}
