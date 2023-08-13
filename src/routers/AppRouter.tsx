@@ -13,6 +13,8 @@ import InscripcionPage from "../pages/Inscripcion/Inscripcion";
 import ResultadoPage from "../pages/Resultados/Resultados";
 import PosicionesPage from "../pages/Posiciones/Posiciones";
 import PreInscripcionPage from "../pages/PreInscripcion/PreInscripcion";
+import JugadoresPage from "../pages/Jugadores/Jugadores";
+import DetalleJugador from "../pages/DetalleJugador/DetalleJugador";
 
 export const AppRouter = () => {
   
@@ -48,6 +50,12 @@ export const AppRouter = () => {
             </ProtectedRoute>
             <ProtectedRoute path="/pre-inscripciones" exact={true} isLogged={isLoggedIn}>
               <PreInscripcionPage />
+            </ProtectedRoute>
+            <ProtectedRoute path="/jugadores" exact={true} isLogged={isLoggedIn}>
+              <JugadoresPage />
+            </ProtectedRoute>
+            <ProtectedRoute path="/administrar-jugador" exact={true} isLogged={isLoggedIn}>
+              <DetalleJugador />
             </ProtectedRoute>
           </IonRouterOutlet>
         </IonReactRouter>

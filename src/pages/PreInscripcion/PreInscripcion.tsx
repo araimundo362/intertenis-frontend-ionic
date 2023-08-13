@@ -84,8 +84,7 @@ const PreInscripcionPage: React.FC = () => {
                             </IonCol>
                         </IonRow>}
             {!isLoading && listado?.map((jugador, index) => <>
-            
-                <IonRow>
+                <IonRow key={jugador._id}>
                     <IonCol size="12">
                         <IonItem lines="full" className="preinscripcion-item">
                             <div className="preinscripcion-item__content">

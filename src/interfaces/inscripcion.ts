@@ -14,3 +14,14 @@ export type PreInscripcion = {
     telefono:  string;
     estado:    string;
 }
+
+export type JugadorInscripto = {
+    apellido: string;
+    categoria: number;
+    nombre: string;
+    telefono: string;
+    equipo: string;
+    estado: string;
+    zona: string;
+    _id: string;
+}

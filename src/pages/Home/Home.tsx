@@ -54,6 +54,11 @@ const HomePage: React.FC = () => {
                                                 <HomeButton label="Pre-Inscripciones" link="/pre-inscripciones" disabled={false}/>
                                             </IonCol>
                                         </IonRow>}
+                    {userData.isAdmin && <IonRow className="row-margin">
+                            <IonCol size="10" offset="1">
+                                <HomeButton label="Jugadores" link="/jugadores" disabled={false}/>
+                            </IonCol>
+                        </IonRow>}
                 <IonRow className="row-title">
                     <IonCol size="12">
                         <h1 className="row-title__title">LA LIGA</h1>
