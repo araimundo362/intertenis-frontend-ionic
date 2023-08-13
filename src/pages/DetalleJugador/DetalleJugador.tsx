@@ -30,7 +30,7 @@ const DetalleJugador: React.FC = () => {
         setAlertOpen(false);
         setIsDeleting(true);
         try {
-            const resp = await borrarJugador(location.state.id);
+            await borrarJugador(location.state.id);
             setIsDeleting(false);
             history.replace("/jugadores");
         } catch (e) {

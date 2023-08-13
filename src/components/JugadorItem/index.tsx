@@ -1,5 +1,5 @@
 import { IonButton, IonIcon, IonItem } from "@ionic/react";
-import { createOutline, tennisball } from "ionicons/icons";
+import { tennisball } from "ionicons/icons";
 import { JugadorItemProps } from "./types";
 
 const JugadorItem: React.FC<JugadorItemProps> = ({nombre, apellido, telefono, buttonAction, iconButton}) => {
@@ -21,8 +21,3 @@ const JugadorItem: React.FC<JugadorItemProps> = ({nombre, apellido, telefono, bu
 };
 
 export default JugadorItem;
-
-/* <IonButton className="preinscripcion-item__button" onClick={() => setModalDataInscripcion(index)}>
-icon={createOutline}
-
-*/

@@ -1,10 +1,10 @@
-import { IonAlert, IonButton, IonCol, IonIcon, IonInput, IonItem, IonLabel, IonRadio, IonRadioGroup, IonRow, IonText } from "@ionic/react";
+import { IonButton, IonCol, IonIcon, IonInput, IonItem, IonLabel, IonRow } from "@ionic/react";
 import React, { useContext, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { ResultadosContext } from "../../context/ResultadosContext";
+import { checkmarkCircleSharp } from "ionicons/icons";
 
 import "./ResultadoForm.scss";
-import { checkmarkCircleSharp } from "ionicons/icons";
 
 type ResultadoFormType = {
     primerSet: string,
@@ -16,7 +16,7 @@ type ResultadoFormType = {
 
 const ResultadoForm: React.FC = () => {
 
-    const { handleSubmit, register, formState: { errors }, setValue, getValues } = useForm<ResultadoFormType>();
+    const { handleSubmit, register, setValue, getValues } = useForm<ResultadoFormType>();
 
     const { prevStep, nextStep, setStatus, setResultado } = useContext(ResultadosContext);
 

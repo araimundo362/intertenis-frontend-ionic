@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import { asignarNuevoEquipo, borrarJugadorLiga, getAllPlayers } from "../axios/jugadores";
-import { Jugador } from "../interfaces/user";
 import { JugadorInscripto } from "../interfaces/inscripcion";
 
 
 export const useJugadores = () => {
 
         const [isLoading, setIsLoading] = useState(false);
-        const [jugadores, setJugadores] = useState<JugadorInscripto[]>([]);
 
         const [jugadoresInscriptos, setJugadoresInscriptos] = useState<JugadorInscripto[]>([]);
         const [jugadoresRechazados, setJugadoresRechazados] = useState<JugadorInscripto[]>([]);
@@ -28,8 +26,7 @@ export const useJugadores = () => {
 
     const asignarEquipo = async (idJugador: string, equipo: string) => {
         try {
-            const resp = await asignarNuevoEquipo(idJugador, equipo);
-            console.log("resp", resp);
+            await asignarNuevoEquipo(idJugador, equipo);
             return true;
         } catch (e) {
             console.error(e);
@@ -40,14 +37,10 @@ export const useJugadores = () => {
     const borrarJugador = async (id: string) => {
         setIsLoading(true);
         try {
-            console.log("bla bla");
             const borrar = await borrarJugadorLiga(id);
-
-            console.log("que onda esto", borrar);
             setIsLoading(false);
             if (borrar) return true;
         } catch (e) {
-            console.log("esto se ejecuta????")
             console.error(e);
             setIsLoading(false);
             return false
@@ -57,7 +50,6 @@ export const useJugadores = () => {
     useEffect(() => {
         getJugadores().then((jug) => {
             if (jug) {
-                console.log("jug", jug);
                 setJugadoresInscriptos(jug.filter((jugador) => jugador.estado === "INSCRIPTO"))
                 setJugadoresRechazados(jug.filter((jugador) => jugador.estado === "RECHAZADO"))
             }
