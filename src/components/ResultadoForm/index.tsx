@@ -78,7 +78,7 @@ const ResultadoForm: React.FC = () => {
             <IonCol size="4">
                 <IonItem fill="solid" className="resultado-form__score-input">
                     <IonLabel position="floating">1er set*</IonLabel>
-                    <IonInput {...register("primerSet", {required: true})} ref={primerSetInputRef} max={2} onIonChange={(ev) => handlePrimerSetInput(ev)} />
+                    <IonInput {...register("primerSet", {required: true})} ref={primerSetInputRef} max={2} onIonChange={(ev) => handlePrimerSetInput(ev.detail.value)} />
                 </IonItem>
             </IonCol>
             <IonCol size="4">
