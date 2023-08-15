@@ -1,4 +1,4 @@
-import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonIcon, IonInput, IonItem, IonLabel, IonList, IonRow } from "@ionic/react";
+import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonIcon, IonInput, IonItem, IonLabel, IonRow } from "@ionic/react";
 import React, { useContext, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { ResultadosContext } from "../../context/ResultadosContext";
