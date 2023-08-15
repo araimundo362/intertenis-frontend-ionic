@@ -40,3 +40,24 @@
     --color: orange !important;
     --border-color: orange !important;
 }
+
+.card-title {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.card-subtitle {
+    font-size: 15px;
+    font-weight: 600;
+    color: red !important;
+    margin: 0;
+}
+
+.label-aviso {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.background-transparent {
+    --background: transparent;
+}
