@@ -100,20 +100,20 @@ const ResultadoForm: React.FC = () => {
         <IonRow>
             <IonCol size="4">
                 <IonItem fill="solid" className="resultado-form__score-input">
-                    <IonLabel position="floating">1er set*</IonLabel>
-                    <IonInput onKeyDown={ev => keyDownPressPrimerSet(ev)} {...register("primerSet", {required: true})} ref={primerSetInputRef} max={2} onIonChange={(ev) => handlePrimerSetInput(ev.detail.value)} />
+                    <IonLabel className="resultado-form__label-input" position="floating">1er set*</IonLabel>
+                    <IonInput className="inputs-score" onKeyDown={ev => keyDownPressPrimerSet(ev)} {...register("primerSet", {required: true})} ref={primerSetInputRef} max={2} onIonChange={(ev) => handlePrimerSetInput(ev.detail.value)} />
                 </IonItem>
             </IonCol>
             <IonCol size="4">
             <IonItem fill="solid" className="resultado-form__score-input">
-                    <IonLabel position="floating">2do set*</IonLabel>
-                    <IonInput onKeyDown={ev => keyDownPressSegundoSet(ev)} {...register("segundoSet", {required: true})} max={2} onIonChange={(ev) => handleSegundoSetInput(ev.detail.value)}  ref={segundoSetInputRef}/>
+                    <IonLabel className="resultado-form__label-input" position="floating">2do set*</IonLabel>
+                    <IonInput className="inputs-score" onKeyDown={ev => keyDownPressSegundoSet(ev)} {...register("segundoSet", {required: true})} max={2} onIonChange={(ev) => handleSegundoSetInput(ev.detail.value)}  ref={segundoSetInputRef}/>
                 </IonItem>
             </IonCol>
             <IonCol size="4">
             <IonItem fill="solid" className="resultado-form__score-input">
-                    <IonLabel position="floating">3er set*</IonLabel>
-                    <IonInput onKeyDown={ev => keyDownPressTercerSet(ev)} {...register("tercerSet")} max={2}  ref={tercerSetInputRef} onIonChange={(ev) => handleTercerSetInput(ev.detail.value)}/>
+                    <IonLabel className="resultado-form__label-input" position="floating">3er set*</IonLabel>
+                    <IonInput className="inputs-score" onKeyDown={ev => keyDownPressTercerSet(ev)} {...register("tercerSet")} max={2}  ref={tercerSetInputRef} onIonChange={(ev) => handleTercerSetInput(ev.detail.value)}/>
                 </IonItem>
             </IonCol>
         </IonRow>
@@ -131,7 +131,7 @@ const ResultadoForm: React.FC = () => {
                 </IonButton>
             </IonCol>
         </IonRow>
-        <IonCard color="light">
+        <IonCard className="card-background">
             <IonCardHeader>
                     <IonCardTitle className="card-title"><span>Importante!</span></IonCardTitle>
                     <IonCardSubtitle>El resultado se anota de la misma forma para ambos jugadores</IonCardSubtitle>

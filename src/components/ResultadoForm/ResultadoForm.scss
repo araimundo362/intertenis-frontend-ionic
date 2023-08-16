@@ -1,8 +1,12 @@
 .resultado-form {
 
     &__score-input {
-        --background: silver !important;
+        --background: transparent !important;
         --border-radius: 10px !important
+    }
+
+    &__label-input {
+        color: beige !important;
     }
 
     &__radio-column {
@@ -41,6 +45,10 @@
     --border-color: orange !important;
 }
 
+.card-background {
+    --background: lightgray;
+}
+
 .card-title {
     font-size: 22px;
     font-weight: 600;
@@ -66,4 +74,8 @@
 
 .background-transparent {
     --background: transparent;
+}
+
+.inputs-score {
+    color: beige;
 }
