@@ -44,7 +44,7 @@ const ResultadoForm: React.FC = () => {
     const handlePrimerSetInput = (value: any) => {
         
         if (value && value.length === 1 && primerSetInputRef.current) {
-            primerSetInputRef.current.value = value + "-";
+            primerSetInputRef.current.value = value + "/";
         }
         if (value?.length === 3) {
             setValue("primerSet", value);
@@ -54,7 +54,7 @@ const ResultadoForm: React.FC = () => {
 
     const handleSegundoSetInput = (value: string | null | undefined) => {
         if (value && value.length === 1 && segundoSetInputRef.current) {
-            segundoSetInputRef.current.value = value + "-";
+            segundoSetInputRef.current.value = value + "/";
         }
         if (value?.length === 3) {
             setValue("segundoSet", value);
@@ -64,7 +64,7 @@ const ResultadoForm: React.FC = () => {
 
     const handleTercerSetInput = (value: string | null | undefined) => {
         if (value && value.length === 1 && tercerSetInputRef.current) {
-            tercerSetInputRef.current.value = value + "-";
+            tercerSetInputRef.current.value = value + "/";
         }
         if (value?.length === 3) {
             tercerSetInputRef.current?.setBlur();
@@ -91,16 +91,6 @@ const ResultadoForm: React.FC = () => {
     }
 
     return <React.Fragment>
-        <IonCard color="light">
-            <IonCardHeader>
-                    <IonCardTitle className="card-title"><span>Importante!</span></IonCardTitle>
-                    <IonCardSubtitle className="card-subtitle">Ejemplo: 5-7 6-4 7-6 // 6-4 6-0</IonCardSubtitle>
-            </IonCardHeader>
-
-            <IonCardContent>
-                <IonLabel className="label-aviso">Ambos jugadores deberan cargar el mismo resultado, y marcar el boton correspondiente!</IonLabel>
-            </IonCardContent>
-        </IonCard>
         <form onSubmit={handleSubmit(onSubmit)}>
         <IonRow>
             <IonCol size="10" offset="1">
@@ -141,6 +131,17 @@ const ResultadoForm: React.FC = () => {
                 </IonButton>
             </IonCol>
         </IonRow>
+        <IonCard color="light">
+            <IonCardHeader>
+                    <IonCardTitle className="card-title"><span>Importante!</span></IonCardTitle>
+                    <IonCardSubtitle>El resultado se anota de la misma forma para ambos jugadores</IonCardSubtitle>
+            </IonCardHeader>
+
+            <IonCardContent className="card-content" >
+                <IonLabel className="label-aviso">6/4 6/4 GANE</IonLabel>
+                <IonLabel className="label-aviso">6/4 6/4 PERDI</IonLabel>
+            </IonCardContent>
+        </IonCard>
         <IonRow>
             <IonCol className="eleccion-jugador-form__submit-column"> 
                 <IonButton  disabled={isSelected === ""} className="width-button-50" type="submit">
@@ -156,7 +157,7 @@ const ResultadoForm: React.FC = () => {
                 </IonButton>
             </IonCol>
         </IonRow>
-
+        
     </React.Fragment>
 };
 
