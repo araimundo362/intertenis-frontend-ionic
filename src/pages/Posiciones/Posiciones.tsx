@@ -64,16 +64,16 @@ const PosicionesPage: React.FC = () => {
                     {table.length === 1 && <>
                         <IonItem lines="inset" className="headers-tabla">
                         <IonRow className="width-100">
-                            <IonCol size="1" className="flex-align-center"><h5 className="size-numbers">Pos</h5> </IonCol>
+                            <IonCol size="1" className="flex-align-center"><h5 className="size-numbers white-letter-color">Pos</h5> </IonCol>
                             {/*<IonCol size="3" className="fixed-width"><h4 className="nombre-tabla">Nombre</h4></IonCol>*/}
-                            <IonCol offset="3" size="1" className="flex-align-center"><h5 className="size-numbers">PG</h5></IonCol>
-                            <IonCol size="1" className="flex-align-center"><h5 className="size-numbers">PP</h5></IonCol>
-                            <IonCol size="1" className="flex-align-center"><h5 className="size-numbers">S+</h5></IonCol>
-                            <IonCol size="1" className="flex-align-center"><h5 className="size-numbers">S-</h5></IonCol>
-                            <IonCol size="1" className="flex-align-center"><h5 className="size-numbers">G+</h5></IonCol>
-                            <IonCol size="1" className="flex-align-center"><h5 className="size-numbers">G-</h5></IonCol>
-                            <IonCol size="1" className="flex-align-center"><h5 className="size-numbers">Pts</h5></IonCol>
-                            <IonCol size="1" className="flex-align-center"><h5 className="size-numbers">/</h5></IonCol>
+                            <IonCol offset="3" size="1" className="flex-align-center"><h5 className="size-numbers white-letter-color">PG</h5></IonCol>
+                            <IonCol size="1" className="flex-align-center"><h5 className="size-numbers white-letter-color">PP</h5></IonCol>
+                            <IonCol size="1" className="flex-align-center"><h5 className="size-numbers white-letter-color">S+</h5></IonCol>
+                            <IonCol size="1" className="flex-align-center"><h5 className="size-numbers white-letter-color">S-</h5></IonCol>
+                            <IonCol size="1" className="flex-align-center"><h5 className="size-numbers white-letter-color">G+</h5></IonCol>
+                            <IonCol size="1" className="flex-align-center"><h5 className="size-numbers white-letter-color">G-</h5></IonCol>
+                            <IonCol size="1" className="flex-align-center"><h5 className="size-numbers white-letter-color">Pts</h5></IonCol>
+                            <IonCol size="1" className="flex-align-center"><h5 className="size-numbers white-letter-color">/</h5></IonCol>
                         </IonRow>
                         </IonItem>
                         {table[0].jugadores.map((elem, index) => <>
@@ -102,16 +102,16 @@ const PosicionesPage: React.FC = () => {
                         </IonRow>
                         <IonItem lines="inset" className="headers-tabla">
                         <IonRow className="width-100">
-                            <IonCol size="1" className="flex-align-center"><h5 className="size-numbers">Pos</h5> </IonCol>
+                            <IonCol size="1" className="flex-align-center"><h5 className="size-numbers white-letter-color">Pos</h5> </IonCol>
                             {/*<IonCol size="3" className="fixed-width"><h4 className="nombre-tabla">Nombre</h4></IonCol>*/}
-                            <IonCol offset="3" size="1" className="flex-align-center"><h5 className="size-numbers">PG</h5></IonCol>
-                            <IonCol size="1" className="flex-align-center"><h5 className="size-numbers">PP</h5></IonCol>
-                            <IonCol size="1" className="flex-align-center"><h5 className="size-numbers">S+</h5></IonCol>
-                            <IonCol size="1" className="flex-align-center"><h5 className="size-numbers">S-</h5></IonCol>
-                            <IonCol size="1" className="flex-align-center"><h5 className="size-numbers">G+</h5></IonCol>
-                            <IonCol size="1" className="flex-align-center"><h5 className="size-numbers">G-</h5></IonCol>
-                            <IonCol size="1" className="flex-align-center"><h5 className="size-numbers">Pts</h5></IonCol>
-                            <IonCol size="1" className="flex-align-center"><h5 className="size-numbers">/</h5></IonCol>
+                            <IonCol offset="3" size="1" className="flex-align-center"><h5 className="size-numbers white-letter-color">PG</h5></IonCol>
+                            <IonCol size="1" className="flex-align-center"><h5 className="size-numbers white-letter-color">PP</h5></IonCol>
+                            <IonCol size="1" className="flex-align-center"><h5 className="size-numbers white-letter-color">S+</h5></IonCol>
+                            <IonCol size="1" className="flex-align-center"><h5 className="size-numbers white-letter-color">S-</h5></IonCol>
+                            <IonCol size="1" className="flex-align-center"><h5 className="size-numbers white-letter-color">G+</h5></IonCol>
+                            <IonCol size="1" className="flex-align-center"><h5 className="size-numbers white-letter-color">G-</h5></IonCol>
+                            <IonCol size="1" className="flex-align-center"><h5 className="size-numbers white-letter-color">Pts</h5></IonCol>
+                            <IonCol size="1" className="flex-align-center"><h5 className="size-numbers white-letter-color">/</h5></IonCol>
                         </IonRow>
                     </IonItem>
                     {zona.jugadores.map((elem, index) => <IonItem lines="full" className="transparent-background" key={elem.nombre}>

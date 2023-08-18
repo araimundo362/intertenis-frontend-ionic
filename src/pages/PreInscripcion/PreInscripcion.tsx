@@ -91,8 +91,8 @@ const PreInscripcionPage: React.FC = () => {
                                 <div className="preinscripcion-item__container-one">
                                     <IonIcon icon={tennisball}  size="large" className="size-ball"/>
                                     <div>
-                                        <h5 className="jugador-item__label-nombre">{jugador.nombre} {jugador.apellido}</h5>
-                                        <h6 className="jugador-item__label-telefono">Tel: {jugador.telefono}</h6>
+                                        <h5 className="jugador-item__label-nombre white-letter-color">{jugador.nombre} {jugador.apellido}</h5>
+                                        <h6 className="jugador-item__label-telefono white-letter-color">Tel: {jugador.telefono}</h6>
                                     </div>
                                 </div>
                                 <IonButton className="preinscripcion-item__button" onClick={() => setModalDataInscripcion(index)}>
