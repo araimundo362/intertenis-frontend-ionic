@@ -20,13 +20,16 @@ export type InfoJugador = {
 
 export type ConfirmacionResultado = {
     resultado: string,
+    fecha: string,
     ganador: {
         _id: string,
-        equipoGanador?: string
+        equipoGanador?: string,
+        nombre: string
     },
     perdedor: {
         _id: string,
         equipoPerdedor?: string
+        nombre: string
     },
     //admin que definio
 }
