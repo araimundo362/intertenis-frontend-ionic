@@ -1,23 +1,22 @@
-import { IonFooter, IonImg } from "@ionic/react";
+import { IonFooter, IonToolbar} from "@ionic/react";
 import TennisBallComponent from "../TennisBall";
-import { useMobile } from "../../hooks/useMobile";
-import RED from "../../assets/Red_.jpg";
 import { FooterProps } from "./types";
 
 import "./Footer.scss";
 
 const Footer:React.FC<FooterProps> = ({ withBalls = true }) => {
 
-    const isMobile = useMobile();
-
-    return <IonFooter className="footer">
-        {withBalls &&  <div className="tennis-balls-container">
+    return <IonFooter collapse="fade" className="footer ion-no-border">
+        <IonToolbar className="toolbar-background">
+                        <h1 className="row-title__title">LA LIGA</h1>
+                        <h4 className="row-title__subtitle">La original, la primera</h4>
+        </IonToolbar>
+        {withBalls &&  <div >
                             <TennisBallComponent />
                             <TennisBallComponent />
                             <TennisBallComponent />
                         </div>    }                
-    {isMobile && <IonImg src={RED} alt="Red" className="footer__net-img" />}
-</IonFooter>;
+        </IonFooter>;
 };
 
 export default Footer;

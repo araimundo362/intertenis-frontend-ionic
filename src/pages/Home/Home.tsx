@@ -59,14 +59,8 @@ const HomePage: React.FC = () => {
                                 <HomeButton label="Jugadores" link="/jugadores" disabled={false}/>
                             </IonCol>
                         </IonRow>}
-                <IonRow className="row-title">
-                    <IonCol size="12">
-                        <h1 className="row-title__title">LA LIGA</h1>
-                        <h4 className="row-title__subtitle">La original, la primera</h4>
-                    </IonCol>
-                </IonRow>
+                <Footer withBalls={false}/>
                 </IonContent>
-                <Footer withBalls={false} />
                 <IonLoading
                         cssClass="my-custom-class"
                         isOpen={isLoading}

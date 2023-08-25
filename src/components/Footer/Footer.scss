@@ -1,6 +1,9 @@
 .footer {
-    background: var(--ion-background-color, #fff);
-    position: unset;
+    bottom: 0;
+    position: fixed;
 
-    //height: 150px;
+    pointer-events: none;
+}
+.toolbar-background {
+    --background: transparent;
 }
