@@ -1,8 +1,10 @@
 import { IonModal, IonHeader, IonToolbar, IonTitle, IonButtons, IonButton, IonContent, IonRow, createAnimation, IonCol, IonItem, IonLabel, IonInput, IonSelect, IonSelectOption } from "@ionic/react";
 import { ModalPreInscripcionFormType } from "./types";
-import { CATEGORIAS, EQUIPOS, ZONAS } from "../../constants/constants";
+import { EQUIPOS, ZONAS } from "../../constants/constants";
 import { useForm } from "react-hook-form";
 import { PreInscripcionFormValues } from "../../pages/PreInscripcion/PreInscripcion";
+import { useContext } from "react";
+import { GlobalContext } from "../../context/GlobalContext";
 
 import "./ModalPreInscripcionForm.scss";
 
@@ -17,6 +19,8 @@ const ModalPreInscripcionForm: React.FC<ModalPreInscripcionFormType> = ({ isOpen
         }
     });
 
+    const { categorias } = useContext(GlobalContext);
+    
     const closeModal = () => {
         reset();
         setIsOpenModal(false);
@@ -78,7 +82,7 @@ const ModalPreInscripcionForm: React.FC<ModalPreInscripcionFormType> = ({ isOpen
                         <IonRow>
                             <IonCol size="10" offset="1">
                                 <IonSelect className="select-modal" {...register("equipo", {required: true})} placeholder="Equipo Superliga*">
-                                    {EQUIPOS.map((elem) => <IonSelectOption value={elem.value}>{elem.opcion}</IonSelectOption>)}
+                                    {EQUIPOS.map((elem) => <IonSelectOption key={elem.value} value={elem.value}>{elem.opcion}</IonSelectOption>)}
                                 </IonSelect>
                                 <div className="error-message" style={errors.equipo ? { opacity: 1 } : undefined}>
                                     {errors.equipo?.type === 'required' && <p role="alert" className="error-alert">Debe seleccionar un equipo</p>}
@@ -88,7 +92,7 @@ const ModalPreInscripcionForm: React.FC<ModalPreInscripcionFormType> = ({ isOpen
                         <IonRow>
                             <IonCol size="10" offset="1">
                                 <IonSelect className="select-modal" {...register("categoria", {required: true})} placeholder="Categoria *">
-                                    {CATEGORIAS.map((elem) => <IonSelectOption value={elem.id}>{elem.categoria}</IonSelectOption>)}
+                                {categorias.map((cat) => <IonSelectOption key={cat.numero} value={cat.numero}>{cat.categoria}</IonSelectOption>)}
                                 </IonSelect>
                                 <div className="error-message" style={errors.categoria ? { opacity: 1 } : undefined}>
                                     {errors.categoria?.type === 'required' && <p role="alert" className="error-alert">Debe seleccionar la categoria</p>}
@@ -98,7 +102,7 @@ const ModalPreInscripcionForm: React.FC<ModalPreInscripcionFormType> = ({ isOpen
                         <IonRow>
                             <IonCol size="10" offset="1">
                                 <IonSelect className="select-modal" {...register("zona", {required: true})} placeholder="Zona *">
-                                    {ZONAS.map((elem) => <IonSelectOption value={elem.id}>{elem.zona}</IonSelectOption>)}
+                                    {ZONAS.map((elem) => <IonSelectOption key={elem.id} value={elem.id}>{elem.zona}</IonSelectOption>)}
                                 </IonSelect>
                                 <div className="error-message" style={errors.zona ? { opacity: 1 } : undefined}>
                                     {errors.zona?.type === 'required' && <p role="alert" className="error-alert">Debe seleccionar una zona</p>}

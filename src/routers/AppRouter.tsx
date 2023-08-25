@@ -15,6 +15,7 @@ import PosicionesPage from "../pages/Posiciones/Posiciones";
 import PreInscripcionPage from "../pages/PreInscripcion/PreInscripcion";
 import JugadoresPage from "../pages/Jugadores/Jugadores";
 import DetalleJugador from "../pages/DetalleJugador/DetalleJugador";
+import { GlobalContextProvider } from "../context/GlobalContext";
 
 export const AppRouter = () => {
   
@@ -36,6 +37,7 @@ export const AppRouter = () => {
             <Route path="/recuperar-password" exact={true}>
               <RecuperarContrasenaPage />
             </Route>
+            <GlobalContextProvider>
             <ProtectedRoute path="/home" exact={true} isLogged={isLoggedIn}>
               <HomePage />
             </ProtectedRoute>
@@ -57,6 +59,7 @@ export const AppRouter = () => {
             <ProtectedRoute path="/administrar-jugador" exact={true} isLogged={isLoggedIn}>
               <DetalleJugador />
             </ProtectedRoute>
+            </GlobalContextProvider>
           </IonRouterOutlet>
         </IonReactRouter>
       </>

@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useLiga } from "../../hooks/useLiga";
 import { ZonasJugadores } from "../../interfaces/posiciones";
-
+import { GlobalContext } from "../../context/GlobalContext";
 import Header from "../../components/Header";
 import { useHistory } from "react-router";
 
@@ -18,10 +18,10 @@ const PosicionesPage: React.FC = () => {
     };
 
     const { categoria } = useContext(AuthContext);
+    const { categorias } = useContext(GlobalContext);
 
     const { getPosiciones } = useLiga();
     
-   // const [categoriaTabla, setCategoriaTabla] = useState(categoria)
     const [table, setTable] = useState<ZonasJugadores[]>([]);
 
     const updateTabla = async (categoria: number) => {
@@ -47,12 +47,7 @@ const PosicionesPage: React.FC = () => {
                     <IonRow>
                         <IonCol size="12" >
                                 <IonSelect className="select posiciones-select" placeholder="Categoria*" onIonChange={(ev) => onSelectTable(ev.detail.value)}>
-                                    <IonSelectOption value={1}>1ra</IonSelectOption>
-                                    <IonSelectOption value={2}>2da</IonSelectOption>
-                                    <IonSelectOption value={3}>3ra</IonSelectOption>
-                                    <IonSelectOption value={4}>4ta</IonSelectOption>
-                                    <IonSelectOption value={5}>5ta</IonSelectOption>
-                                    <IonSelectOption value={6}>6ta</IonSelectOption>
+                                    {categorias.map((cat) => <IonSelectOption key={cat.numero} value={cat.numero}>{cat.categoria}</IonSelectOption>)}
                                 </IonSelect>
                         </IonCol>
                     </IonRow>
@@ -94,7 +89,7 @@ const PosicionesPage: React.FC = () => {
                                         <div className="separador"></div>
                                     </>)}
                     </>}
-                    {table.length > 1 && table.map((zona, index) => <>
+                    {table.length > 1 && table.map((zona) => <>
                         <IonRow>
                             <IonCol size="10" offset="1">
                                 <h2 className="cargar-resultado__label">Zona {zona._id}</h2>

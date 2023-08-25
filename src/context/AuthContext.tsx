@@ -1,4 +1,4 @@
-import React, { useState, ReactNode, useEffect } from 'react';
+import React, { useState, ReactNode} from 'react';
 import { JugadorData } from '../interfaces/user';
 
 type AuthContextProps = {
@@ -8,7 +8,6 @@ type AuthContextProps = {
 export const AuthContext = React.createContext<{
     isLoggedIn: boolean,
     setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>,
-    isLoadingPersonalData: boolean,
     userData: JugadorData,
     setUserData: React.Dispatch<React.SetStateAction<any>>,
     inscripcion: boolean,
@@ -22,7 +21,6 @@ export const AuthContext = React.createContext<{
 export const AuthContextProvider = ({ children }: AuthContextProps) => {
     
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [isLoadingPersonalData, setIsLoadingPersonalData] = useState(false);
 
     const [userData, setUserData] = useState<JugadorData>({
       nombre: "",
@@ -38,16 +36,9 @@ export const AuthContextProvider = ({ children }: AuthContextProps) => {
 
     const [equipo, setEquipo] = useState("");
     
-    useEffect(() => {
-      if (isLoggedIn) {
-        setIsLoadingPersonalData(true);
-      }
-    }, [isLoggedIn]);
-
     return (<AuthContext.Provider value={{
                                         isLoggedIn,
                                         setIsLoggedIn,
-                                        isLoadingPersonalData,
                                         userData,
                                         setUserData,
                                         inscripcion,

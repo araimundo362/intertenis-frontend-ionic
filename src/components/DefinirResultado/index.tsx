@@ -1,5 +1,5 @@
 import { IonButton, IonCol, IonDatetime, IonDatetimeButton, IonInput, IonItem, IonLabel, IonModal, IonRow, IonSelect, IonSelectOption } from "@ionic/react"
-import { useRef, useState } from "react"
+import { useContext, useRef, useState } from "react"
 import { useLiga } from "../../hooks/useLiga";
 import { Jugador } from "../../interfaces/user";
 import { ConfirmacionResultado } from "../../interfaces/resultado";
@@ -8,12 +8,15 @@ import { useHistory } from "react-router";
 import dayjs from "dayjs";
 
 import "./DefinirResultado.scss";
+import { GlobalContext } from "../../context/GlobalContext";
 
 const DefinirComponent: React.FC = () => {
 
     const primerSetInputRef = useRef<HTMLIonInputElement>(null);
     const segundoSetInputRef = useRef<HTMLIonInputElement>(null);
     const tercerSetInputRef = useRef<HTMLIonInputElement>(null);
+    
+    const { categorias } = useContext(GlobalContext);
     
     const history = useHistory();
     const [ganadorPartido, setGanadorPartido] = useState<Jugador>();
@@ -140,9 +143,7 @@ const DefinirComponent: React.FC = () => {
                     <IonRow>
                         <IonCol size="10" offset="1">
                                 <IonSelect className="eleccion-jugador-form__select-rival" placeholder="Categoria*" onIonChange={(ev) => onSelectCategory(ev.detail.value)}>
-                                    <IonSelectOption value={1}>1ra</IonSelectOption>
-                                    <IonSelectOption value={2}>2da</IonSelectOption>
-                                    <IonSelectOption value={3}>3ra</IonSelectOption>
+                                {categorias.map((cat) => <IonSelectOption key={cat.numero} value={cat.numero}>{cat.categoria}</IonSelectOption>)}
                                 </IonSelect>
                         </IonCol>
                     </IonRow>

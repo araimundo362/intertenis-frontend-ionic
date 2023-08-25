@@ -32,34 +32,3 @@ const App: React.FC = () => (
 );
 
 export default App;
-
-/* 
--- Headers de las tablas de posiciones color AMARILLO CON LETRAS NEGRAS
--- Invertir colores de las posiciones: Fondo negro, letras amarillas
--- Tablas de posiciones 
-
-
--- Autocompletar input a medida que se va completando -> Ingresa un 6, agregar una /
-
---Home: -> fondo gris
-           Botones gris oscuro fondeado
-           Letra     color: white;
-                      font-weight: 750;
-
-
--- Analizar Resultados
-
--- AGREGAR TELEFONO AL REGISTRO.
--- Agregar autorizacion para inscribirse. 
-
-Estado al inscribirse: PREINSCRIPTO, 
-Admin tiene que confirmar la inscripcion. 
-
-Inscripcion: NOMBRE, APELLIDO, TELEFONO.
-La persona queda preinscripta.
-
-Admin al confirmar inscripcion desgina Categoria,Zona, equipo
-
-
-
-*/
