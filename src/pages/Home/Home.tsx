@@ -46,9 +46,9 @@ const HomePage: React.FC = () => {
                     </div>
                 </IonHeader>
                 <IonContent className="background-home">
-                    {userData.isAdmin && <div className="marquee">
+                    <div className="marquee">
                         <pre>{makeBannerResultados()}</pre>
-                    </div>}
+                    </div>
                     <IonRow className="row-margin">
                         <IonCol size="10" offset="1">
                             <HomeButton label="Posiciones" link="/posiciones" disabled={false}/>
