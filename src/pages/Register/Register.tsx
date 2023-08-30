@@ -148,7 +148,7 @@ const RegisterPage: React.FC<any> = () => {
                     buttons={['OK']}
                 />
                 </IonContent>
-                <Footer withBalls={false}/>
+                <Footer withBalls={true} withTitle={false}/>
     </IonPage>)
 };
 
