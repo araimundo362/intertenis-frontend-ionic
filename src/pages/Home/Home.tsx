@@ -8,6 +8,7 @@ import LOGO from "../../assets/logo_intertenis.png";
 import "./Home.scss";
 import Footer from "../../components/Footer";
 import { checkMyInscripcion } from "../../axios/inscripcion";
+import { GlobalContext } from "../../context/GlobalContext";
 
 const HomePage: React.FC = () => {
 
@@ -15,7 +16,18 @@ const HomePage: React.FC = () => {
 
     const { userData, inscripcion, setInscripcion, setCategoria, setEquipo } = useContext(AuthContext);
 
+    const { resultados } = useContext(GlobalContext);
+
+    const makeBannerResultados = () => {
+
+            let stringResultados = "";
+            resultados.forEach((result) => stringResultados += result.ganador + " a " + result.perdedor + ` ${result.score}` + "         ");
+
+            return stringResultados;
+    };
+
     useEffect(() => {
+        makeBannerResultados();
         if (!inscripcion) {
             checkMyInscripcion(userData._id).then((inscripcionStatus) => {
                 setInscripcion(inscripcionStatus.inscripcion);
@@ -34,6 +46,9 @@ const HomePage: React.FC = () => {
                     </div>
                 </IonHeader>
                 <IonContent className="background-home">
+                    {userData.isAdmin && <div className="marquee">
+                        <pre>{makeBannerResultados()}</pre>
+                    </div>}
                     <IonRow className="row-margin">
                         <IonCol size="10" offset="1">
                             <HomeButton label="Posiciones" link="/posiciones" disabled={false}/>

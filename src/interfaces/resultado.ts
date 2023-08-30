@@ -33,3 +33,13 @@ export type ConfirmacionResultado = {
     },
     //admin que definio
 }
+
+export type ResultadosResponse = {
+    _id: string,
+    score: string,
+    ganador: string, 
+    perdedor: string,
+    fecha: string,
+    equipoGanador: string,
+    equipoPerdedor: string
+}

@@ -21,3 +21,13 @@ export const axiosConfirmarResultado = async (confirmacionResultado: Confirmacio
         return false;
     }
 }
+
+export const obtenerResultados = async () => {
+    try {
+        const {data: resultados} = await axiosInstance.get(RESULTADOS);
+        return resultados;
+    } catch (e) {
+        console.error(e);
+        return [];
+    }
+}
