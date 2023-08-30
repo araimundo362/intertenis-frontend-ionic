@@ -3,12 +3,12 @@ import { useContext, useEffect, useState } from "react";
 
 import HomeButton from "../../components/HomeButton";
 import { AuthContext } from "../../context/AuthContext";
-
-import LOGO from "../../assets/logo_intertenis.png";
-import "./Home.scss";
 import Footer from "../../components/Footer";
 import { checkMyInscripcion } from "../../axios/inscripcion";
 import { GlobalContext } from "../../context/GlobalContext";
+import LOGO from "../../assets/logo_intertenis.png";
+
+import "./Home.scss";
 
 const HomePage: React.FC = () => {
 
