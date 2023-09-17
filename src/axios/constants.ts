@@ -11,4 +11,5 @@ export const CHECK_INSCRIPCION = "/check-inscripcion"
 export const BORRAR_JUGADOR = "/borrar-jugador";
 export const ASIGNAR_EQUIPO = "/asignar-equipo";
 export const CATEGORIAS = "/categorias";
+export const CAMBIAR_CONTRASENA = "/change-password"
 // export const JUGADORES_LIGA = "/jugadores-liga"

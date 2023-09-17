@@ -73,7 +73,7 @@ const LoginForm: React.FC = () => {
                                 {errors.password && <p role="alert" className="error-alert">{errors.password.message}</p>}
                             </div>
                             <div className="forgot-password-container">
-                                <span className="forgot-password-container__forgot-label" onClick={goToForgotPassword}>Olvide mi contrasena</span>
+                                <span className="forgot-password-container__forgot-label" onClick={goToForgotPassword}>Cambiar contraseña</span>
                             </div>
                         </IonCol>
                     </IonRow>

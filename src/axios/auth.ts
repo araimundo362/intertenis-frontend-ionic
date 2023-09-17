@@ -1,7 +1,7 @@
 import axiosInstance from '.';
 import { OK, UNKNOWN, USER_EXISTS, USER_NOT_FOUND, WRONG_PASSWORD } from '../constants/constants';
 import { RegisterFormValue } from '../interfaces/registro';
-import { LOGIN, REGISTER } from './constants';
+import { CAMBIAR_CONTRASENA, LOGIN, REGISTER } from './constants';
 
 export const axiosLogin = async (user: string, password: string) => {
     const body = {user, password}
@@ -32,6 +32,22 @@ export const axiosRegister = async ( body: RegisterFormValue) => {
                 return {res: false, status: USER_EXISTS};
             default: 
                 return {res: false, status: UNKNOWN};
+        }
+    }
+}
+
+export const changePassword = async (user: string, password: string) => {
+    const body = {user, password}
+    try {
+        await axiosInstance.post(CAMBIAR_CONTRASENA, body);
+        return {res: true, status: OK};
+    } catch (e: any) {
+        console.error(e);
+        switch (e.response.status) {
+            case 400: 
+                return {res: false, status: UNKNOWN, data: null}
+            default:
+                return {res: false, status: UNKNOWN, data: null}
         }
     }
 }
