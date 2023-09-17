@@ -23,7 +23,7 @@ export const GlobalContextProvider = ({ children }: GlobalContextProps) => {
         getCategorias().then((data: Categoria[]) => {
             setCategorias(data);
         });
-        obtenerResultados().then((data: ResultadosResponse[]) => setResultados(data));
+        obtenerResultados().then((data: ResultadosResponse[]) => setResultados(data.reverse()));
     }, []);
     
     return <GlobalContext.Provider value={{ categorias, resultados }}>

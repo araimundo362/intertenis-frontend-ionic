@@ -1,0 +1,53 @@
+.players_score_board{
+    width: 650px;
+    height: 250px;
+    position: relative;
+}
+
+.player_row {
+    background-color: black;
+    float: left;
+    position: absolute;
+    &:nth-child(2){
+        top: 71px;
+    }
+}
+
+.row-resultado-card {
+    display: flex;
+    justify-content: center;
+}
+
+.resultado-card {
+    // height: 200px;
+    background: linear-gradient(45deg, black, transparent);
+    &__subtitle {
+        margin: 8px;
+        font-size: 16px;
+
+        font-weight: 600;
+        color: wheat;
+    }
+
+    &__item {
+        --background: transparent;
+    }
+
+    &__no-padding {
+        padding: 0;
+    }
+
+    &__name {
+        font-weight: 600 !important;
+        font-size: 16px !important;
+
+        &__winner {
+            color: gold;
+        }
+
+        &__looser {
+            color: gray;
+        }
+    }
+}
+
