@@ -12,6 +12,8 @@ import { GlobalContext } from "../../context/GlobalContext";
 
 const DefinirComponent: React.FC = () => {
 
+    const [fecha, setFecha ] = useState(dayjs().format("DD/MM/YYYY"));
+    
     const primerSetInputRef = useRef<HTMLIonInputElement>(null);
     const segundoSetInputRef = useRef<HTMLIonInputElement>(null);
     const tercerSetInputRef = useRef<HTMLIonInputElement>(null);
@@ -50,7 +52,6 @@ const DefinirComponent: React.FC = () => {
         let resultado = primerSet + " " + segundoSet;
         if (tercerSet) resultado += " " + tercerSet;
 
-        const fecha = dayjs().format("DD-MM-YYYY");
         if (ganadorPartido !== undefined && perdedorPartido !== undefined) {
             const resultadoConfirmado: ConfirmacionResultado = {
                 ganador: {
@@ -129,6 +130,11 @@ const DefinirComponent: React.FC = () => {
         history.push("/home")
     }
 
+    const selectedDate = (fecha: any) => {
+        const fechaParseada = dayjs(fecha).format("DD/MM/YYYY");
+        setFecha(fechaParseada);
+    }
+
     return <>
             <IonRow>
                     <IonCol size="10" offset="1">
@@ -137,7 +143,7 @@ const DefinirComponent: React.FC = () => {
                 </IonRow>
                 <IonRow>
                     <IonCol size="10" offset="1">
-                            <IonDatetimeButton disabled={true} datetime="datetime" color="warning"/>                        
+                            <IonDatetimeButton  datetime="datetime" color="warning"/>                        
                     </IonCol>
                 </IonRow>
                     <IonRow>
@@ -203,7 +209,7 @@ const DefinirComponent: React.FC = () => {
                 
                     <Alert isOpen={alertOpen} header={header} message={message} buttons={["Ok!"]} closeAlert={goHome}/>
                     <IonModal keepContentsMounted={true}>
-                        <IonDatetime className="custom-datetime" id="datetime" presentation="date" />
+                        <IonDatetime onIonChange={(ev) => selectedDate(ev.detail.value)} className="custom-datetime" id="datetime" presentation="date" />
                     </IonModal>
     </>
 }
