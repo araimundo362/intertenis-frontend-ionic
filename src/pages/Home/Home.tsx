@@ -55,7 +55,7 @@ const HomePage: React.FC = () => {
                     </IonRow>
                     <IonRow className="row-margin">
                         <IonCol size="10" offset="1">
-                            <HomeButton label="Cargar Resultado" link="/cargar-resultado" disabled={true}/> 
+                            <HomeButton label="Cargar Resultado" link="/cargar-resultado" disabled={!userData.isAdmin}/> 
                         </IonCol>
                     </IonRow>
                     <IonRow className="row-margin">
