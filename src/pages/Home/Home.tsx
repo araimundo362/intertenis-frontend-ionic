@@ -19,9 +19,8 @@ const HomePage: React.FC = () => {
     const { resultados } = useContext(GlobalContext);
 
     const makeBannerResultados = () => {
-
             let stringResultados = "";
-            resultados.forEach((result) => stringResultados += `${result.ganador} a ${result.perdedor} ${result.score}          `);
+            resultados.slice(0,8).forEach((result) => stringResultados += `${result.ganador} a ${result.perdedor} ${result.score}          `);
 
             return stringResultados;
     };
@@ -56,7 +55,7 @@ const HomePage: React.FC = () => {
                     </IonRow>
                     <IonRow className="row-margin">
                         <IonCol size="10" offset="1">
-                            <HomeButton label="Cargar Resultado" link="/cargar-resultado" disabled={!inscripcion && !userData.isAdmin}/>
+                            <HomeButton label="Cargar Resultado" link="/cargar-resultado" disabled={true}/> 
                         </IonCol>
                     </IonRow>
                     <IonRow className="row-margin">
@@ -91,3 +90,5 @@ const HomePage: React.FC = () => {
 }
 
 export default HomePage;
+
+//disabled={!inscripcion && !userData.isAdmin}

@@ -55,7 +55,7 @@ const LoginForm: React.FC = () => {
                         <IonCol size="10" offset="1">
                             <IonItem fill="solid" className="login-inputs">
                                 <IonLabel position="floating">Email*</IonLabel>
-                                <IonInput {...register("user", { required: true })} placeholder="Ingresa el mail"></IonInput>
+                                <IonInput {...register("user", { required: true })} placeholder="Ingresa el mail" autocomplete="email" autofocus></IonInput>
                             </IonItem>
                             <div className="error-message" style={errors.user ? { opacity: 1 } : undefined}>
                                 {errors.user?.type === 'required' && <p role="alert" className="error-alert">Debe ingresar un email</p>}
@@ -66,7 +66,7 @@ const LoginForm: React.FC = () => {
                         <IonCol size="10" offset="1">
                             <IonItem fill="solid" className="login-inputs">
                                 <IonLabel position="floating">Contrasena*</IonLabel>
-                                <IonInput {...register("password", { required: true })} type="password" placeholder="Ingresa la contrasena"></IonInput>
+                                <IonInput {...register("password", { required: true })} type="password" placeholder="Ingresa la contrasena" autofocus autocomplete="current-password"></IonInput>
                             </IonItem>
                             <div className="error-message" style={errors.password ? { opacity: 1 } : undefined}>
                                 {errors.password?.type === 'required' && <p role="alert" className="error-alert">Debe ingresar su contrasena</p>}
