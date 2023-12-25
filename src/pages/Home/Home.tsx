@@ -53,21 +53,16 @@ const HomePage: React.FC = () => {
                             <HomeButton label="Posiciones" link="/posiciones" disabled={false}/>
                         </IonCol>
                     </IonRow>
-                    <IonRow className="row-margin">
+                    { userData.isAdmin && <IonRow className="row-margin">
                         <IonCol size="10" offset="1">
-                            <HomeButton label="Cargar Resultado" link="/cargar-resultado" disabled={!userData.isAdmin}/> 
+                            <HomeButton label="Cargar Resultado" link="/cargar-resultado" disabled={false}/> 
                         </IonCol>
-                    </IonRow>
+                    </IonRow>}
                     <IonRow className="row-margin">
                         <IonCol size="10" offset="1">
                             <HomeButton label="Resultados" link="/resultados" />
                         </IonCol>
                     </IonRow>
-                    {!userData.isAdmin && !inscripcion && <IonRow className="row-margin">
-                                            <IonCol size="10" offset="1">
-                                                <HomeButton label="Inscripcion" link="/inscripcion" />
-                                            </IonCol>
-                                        </IonRow> } 
                     {userData.isAdmin && <IonRow className="row-margin">
                                             <IonCol size="10" offset="1">
                                                 <HomeButton label="Pre-Inscripciones" link="/pre-inscripciones" disabled={false}/>
@@ -90,5 +85,3 @@ const HomePage: React.FC = () => {
 }
 
 export default HomePage;
-
-//disabled={!inscripcion && !userData.isAdmin}
